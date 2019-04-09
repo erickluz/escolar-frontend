@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Aluno } from '../shared/aluno.modal';
+import { Aluno } from '../../shared/aluno.modal';
 
 @Component({
   selector: 'app-aluno',
@@ -8,7 +8,7 @@ import { Aluno } from '../shared/aluno.modal';
 })
 export class AlunoComponent implements OnInit {
 
-  aluno: Aluno = new Aluno()
+  aluno: Aluno
 
   constructor() {
 
