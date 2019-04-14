@@ -1,25 +1,44 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+
+import { adminLteConf } from './admin-lte.conf';
+
 import { AppRoutingModule } from './app-routing.module';
+import { CoreModule } from './core/core.module';
+
+import { LayoutModule, AccordionModule } from 'angular-admin-lte';
+
 import { AppComponent } from './app.component';
-import { AlunoComponent } from './aluno/form-alunos/aluno.component';
-import { ListagemAlunosComponent } from './aluno/listagem-alunos/listagem-alunos.component';
 import { HomeComponent } from './home/home.component';
 
+import { LoadingPageModule, MaterialBarModule } from 'angular-loading-page';
+import { CursosComponent } from './cursos/cursos.component';
+import { DisciplinasComponent } from './disciplinas/disciplinas.component';
+import { TurmasComponent } from './turmas/turmas.component';
+import { AulasComponent } from './aulas/aulas.component';
+import { ProfessoresComponent } from './professores/professores.component';
+import { AlunosComponent } from './alunos/alunos.component';
+
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    AlunoComponent,
-    ListagemAlunosComponent,
-    HomeComponent
-  ],
   imports: [
     BrowserModule,
-    FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AccordionModule,
+    CoreModule,
+    LayoutModule.forRoot(adminLteConf),
+    LoadingPageModule, MaterialBarModule
   ],
-  providers: [],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    CursosComponent,
+    DisciplinasComponent,
+    TurmasComponent,
+    AulasComponent,
+    ProfessoresComponent,
+    AlunosComponent
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
