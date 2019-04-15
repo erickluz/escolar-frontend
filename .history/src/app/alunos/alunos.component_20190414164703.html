@@ -1,0 +1,27 @@
+<form [formGroup]="formalarioDeAlunos" (ngSubmit)="enviarDados()">
+
+  <div class="form-group">
+    <label for="id">Id</label>
+    <!-- <input type="text" formControlName="id" class="form-control" placeholder=""> -->
+    <input class="form-control" type="text" formControlName="id" readonly>
+    <small id="idajuda" class="form-text text-muted">Gerado automaticamente.</small>
+  </div>
+
+
+  <div class="form-group">
+    <label for="id">Nome</label>
+    <input type="text" formControlName="nome" class="form-control" placeholder="">
+  </div>
+
+  <div class="form-group">
+    <label for="id">Id</label>
+    <input type="text" formControlName="id" class="form-control" placeholder="">
+    <small id="idajuda" class="form-text text-muted">Gerado automaticamente.</small>
+  </div>
+
+  <div>
+    <button [disabled]="!formalarioDeAlunos.valid">Enviar dados</button>
+  </div>
+
+  <div>{{ formalarioDeAlunos.value | json}}</div>
+</form>

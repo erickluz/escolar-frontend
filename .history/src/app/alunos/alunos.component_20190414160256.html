@@ -1,0 +1,18 @@
+<form [formGroup]="formularioDeUsuario" (ngSubmit)="enviarDados()">
+    <div>
+        <label for="id">id: </label>
+        <input type="text" formControlName="id">
+    </div>
+    <div>
+        <label for="nome">Nome: </label>
+        <input type="text" formControlName="nome">
+    </div>
+    <div>
+        <label for="sobrenome">Sobrenome: </label>
+        <input type="text" formControlName="sobrenome">
+    </div> 
+
+    <div>
+        <button [disabled]="!formularioDeUsuario.valid">Enviar dados</button>
+    </div>
+</form>

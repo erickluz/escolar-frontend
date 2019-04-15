@@ -1,0 +1,67 @@
+<form [formGroup]="formalarioDeAlunos" (ngSubmit)="enviarDados()">
+
+  <div class="form-group">
+    <label for="id">Id</label>
+    <input id="id" class="form-control" type="text" formControlName="id" readonly>
+    <small id="idajuda" class="form-text text-muted">Gerado automaticamente.</small>
+  </div>
+  <div class="form-group">
+    <label for="id">Nome</label>
+    <input type="text" formControlName="nome" class="form-control" placeholder="">
+  </div>
+  <div class="form-group">
+    <label for="sobrenome">Sobrenome</label>
+    <input type="text" formControlName="sobrenome" class="form-control" placeholder="">
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" formControlName="email" class="form-control" placeholder="">
+  </div>
+  <div class="form-group">
+    <label for="senha">Senha</label>
+    <input type="password" formControlName="senha" class="form-control" placeholder="">
+  </div>
+
+  <div class="form-group">
+    <label for="ra">RA</label>
+    <input type="text" formControlName="ra" class="form-control" placeholder="">
+  </div>
+  <div class="form-group">
+    <label for="cpf">CPF</label>
+    <input type="text" formControlName="cpf" class="form-control" placeholder="">
+  </div>
+  <div class="form-group">
+    <label for="dataNascimento">Data Nascimento</label>
+    <input type="text" formControlName="dataNascimento" class="form-control" placeholder="">
+  </div>
+  <div class="form-group">
+    <label for="endereco">Endereco</label>
+    <input type="text" formControlName="endereco" class="form-control" placeholder="">
+  </div>
+  <div class="form-group">
+    <label for="telefone1">Telefone 1</label>
+    <input type="text" formControlName="telefone1" class="form-control" placeholder="">
+  </div>
+  <div class="form-group">
+    <label for="telefone2">Telefone 2</label>
+    <input type="text" formControlName="telefone2" class="form-control" placeholder="">
+  </div>
+  <div class="form-group">
+    <label for="dataCadastro">Data de Cadastro</label>
+    <input type="text" formControlName="dataCadastro" class="form-control" placeholder="">
+  </div>
+  <div class="form-group">
+      <div class="input-group">
+        <input placeholder="yyyy-mm-dd"
+               name="dp" ngbDatepicker >
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+        </div>
+      </div>
+    </div>
+  <div>
+    <button [disabled]="!formalarioDeAlunos.valid" class="btn btn-primary mb-2">Enviar dados</button>
+  </div>
+  <hr>
+  <div>{{ formalarioDeAlunos.value | json}}</div>
+</form>

@@ -45,6 +45,7 @@
     "@angular/platform-browser": "^7.2.3",
     "@angular/platform-browser-dynamic": "^7.2.3",
     "@angular/router": "^7.2.3",
+    "@ng-bootstrap/ng-bootstrap": "^4.1.1",
     "admin-lte-css": "^2.4.3",
     "angular-loading-page": "^0.6.0",
     "bootstrap-css-only": "^3.3.7",

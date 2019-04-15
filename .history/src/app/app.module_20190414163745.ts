@@ -1,0 +1,48 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { adminLteConf } from './admin-lte.conf';
+
+import { AppRoutingModule } from './app-routing.module';
+import { CoreModule } from './core/core.module';
+
+import { LayoutModule, AccordionModule } from 'angular-admin-lte';
+
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+
+import { LoadingPageModule, MaterialBarModule } from 'angular-loading-page';
+import { CursosComponent } from './cursos/cursos.component';
+import { DisciplinasComponent } from './disciplinas/disciplinas.component';
+import { TurmasComponent } from './turmas/turmas.component';
+import { AulasComponent } from './aulas/aulas.component';
+import { ProfessoresComponent } from './professores/professores.component';
+import { AlunosComponent } from './alunos/alunos.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { InputGroupModule, InputTextModule as mkInputTextModule, BoxModule } from 'angular-admin-lte';
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    AccordionModule,
+    CoreModule,
+    LayoutModule.forRoot(adminLteConf),
+    LoadingPageModule, MaterialBarModule,
+    ReactiveFormsModule,
+    mkInputTextModule,
+    InputGroupModule
+  ],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    CursosComponent,
+    DisciplinasComponent,
+    TurmasComponent,
+    AulasComponent,
+    ProfessoresComponent,
+    AlunosComponent,    
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }

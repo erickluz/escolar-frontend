@@ -1,0 +1,24 @@
+<form [formGroup]="formalarioDeAlunos" (ngSubmit)="enviarDados()">
+    <mk-input-group-content>
+        <!-- <input mkInputText formControlName="firstName" class="toto form-control"/> -->
+        <label for="id">id: </label>
+        <input type="text" formControlName="id" class="toto form-control">
+  </mk-input-group-content>
+
+        
+    
+    <div>
+        <label for="nome">Nome: </label>
+        <input type="text" formControlName="nome">
+    </div>
+    <div>
+        <label for="sobrenome">Sobrenome: </label>
+        <input type="text" formControlName="sobrenome">
+    </div> 
+
+    <div>
+        <button [disabled]="!formalarioDeAlunos.valid">Enviar dados</button>
+    </div>
+
+    <div>{{ formalarioDeAlunos.value | json}}</div>
+</form>
