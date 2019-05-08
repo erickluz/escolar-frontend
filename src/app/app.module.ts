@@ -1,51 +1,71 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
-import { adminLteConf } from './admin-lte.conf';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
-import { AppRoutingModule } from './app-routing.module';
-import { CoreModule } from './core/core.module';
-
-import { LayoutModule, AccordionModule } from 'angular-admin-lte';
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 
-import { LoadingPageModule, MaterialBarModule } from 'angular-loading-page';
-import { CursosComponent } from './cursos/cursos.component';
-import { DisciplinasComponent } from './disciplinas/disciplinas.component';
-import { TurmasComponent } from './turmas/turmas.component';
-import { AulasComponent } from './aulas/aulas.component';
-import { ProfessoresComponent } from './professores/professores.component';
-import { AlunosComponent } from './alunos/alunos.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { InputGroupModule, InputTextModule as mkInputTextModule, BoxModule } from 'angular-admin-lte';
-import { HttpModule } from '@angular/http';
+// Import containers
+import { DefaultLayoutComponent } from './containers';
 
+import { P404Component } from './views/error/404.component';
+import { P500Component } from './views/error/500.component';
+import { LoginComponent } from './views/login/login.component';
+import { RegisterComponent } from './views/register/register.component';
+
+const APP_CONTAINERS = [
+  DefaultLayoutComponent
+];
+
+import {
+  AppAsideModule,
+  AppBreadcrumbModule,
+  AppHeaderModule,
+  AppFooterModule,
+  AppSidebarModule,
+} from '@coreui/angular';
+
+// Import routing module
+import { AppRoutingModule } from './app.routing';
+
+// Import 3rd party components
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AccordionModule,
-    CoreModule,
-    LayoutModule.forRoot(adminLteConf),
-    LoadingPageModule, MaterialBarModule,
-    ReactiveFormsModule,
-    mkInputTextModule,
-    InputGroupModule,
-    HttpModule
+    AppAsideModule,
+    AppBreadcrumbModule.forRoot(),
+    AppFooterModule,
+    AppHeaderModule,
+    AppSidebarModule,
+    PerfectScrollbarModule,
+    BsDropdownModule.forRoot(),
+    TabsModule.forRoot(),
+    ChartsModule
   ],
   declarations: [
     AppComponent,
-    HomeComponent,
-    CursosComponent,
-    DisciplinasComponent,
-    TurmasComponent,
-    AulasComponent,
-    ProfessoresComponent,
-    AlunosComponent,    
+    ...APP_CONTAINERS,
+    P404Component,
+    P500Component,
+    LoginComponent,
+    RegisterComponent
   ],
-  bootstrap: [AppComponent]
+  providers: [{
+    provide: LocationStrategy,
+    useClass: HashLocationStrategy
+  }],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
