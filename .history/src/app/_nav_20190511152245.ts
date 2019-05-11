@@ -52,6 +52,6 @@ export const navItems: NavData[] = [
   {
     name: 'Disciplinas',
     url: '/cadastro/lista-disciplinas',
-    icon: 'icon-doc'
+    icon: 'icon-school'
   }
 ];

@@ -84,7 +84,7 @@ export const routes: Routes = [
       },
       {
         path: 'cadastro',
-        loadChildren: './cadastro/cadastro.module#CadastroModule'
+        loadChildren: './cadastro/cadastro.module#CadstroModule'
       }
     ]
   },

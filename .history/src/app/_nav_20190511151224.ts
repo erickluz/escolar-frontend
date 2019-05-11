@@ -42,16 +42,16 @@ export const navItems: NavData[] = [
   {
     name: 'Alunos',
     url: '/cadastro/lista-alunos',
-    icon: 'icon-user'
+    icon: 'icon-person'
   },
   {
     name: 'Professores',
     url: '/cadastro/lista-professores',
-    icon: 'icon-graduation'
+    icon: 'icon-teacher'
   },
   {
     name: 'Disciplinas',
     url: '/cadastro/lista-disciplinas',
-    icon: 'icon-doc'
+    icon: 'icon-school'
   }
 ];

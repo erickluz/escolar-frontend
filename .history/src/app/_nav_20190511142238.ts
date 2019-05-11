@@ -41,17 +41,17 @@ export const navItems: NavData[] = [
   },
   {
     name: 'Alunos',
-    url: '/cadastro/lista-alunos',
-    icon: 'icon-user'
+    url: '/cadastro/alunos',
+    icon: 'icon-drop'
   },
   {
     name: 'Professores',
-    url: '/cadastro/lista-professores',
-    icon: 'icon-graduation'
+    url: '/cadastro/professores',
+    icon: 'icon-pencil'
   },
   {
     name: 'Disciplinas',
-    url: '/cadastro/lista-disciplinas',
-    icon: 'icon-doc'
+    url: '/theme/typography',
+    icon: 'icon-pencil'
   }
 ];

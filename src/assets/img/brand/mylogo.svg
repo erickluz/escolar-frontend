@@ -1,0 +1,27 @@
+<svg width="87" height="25" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="27" width="89" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <defs>
+   <style>.cls-1{fill:#203442;}.cls-2{fill:#4c5665;}.cls-3{fill:#ecf0f1;}.cls-4{fill:#face53;}</style>
+  </defs>
+  <g stroke="null" transform="rotate(33.28367614746094 17.000020980834964,13.375000953674316) " id="svg_11">
+   <g stroke="null" transform="matrix(0.556159071344117,-0.3723089380578693,0.31224777168947926,0.4714499010541947,-12.743805479696958,-4.473020814891425) " id="svg_4">
+    <path stroke="null" id="svg_6" d="m22.824767,67.989047l0,0c-8.56,0 -15.5,-3.846 -15.5,-10l0,-10l31,0l0,10c0,5.171 -6.94,10 -15.5,10z" class="cls-1"/>
+    <path stroke="null" id="svg_7" d="m44.495767,43.980047l-18.871,-9.227a7.518,7.518 0 0 0 -6.6,0l-18.871,9.227a3.26,3.26 0 0 0 0.15,5.927l2.521,1.082l16.543,7.079a7.517,7.517 0 0 0 5.914,0l16.543,-7.079l2.521,-1.078a3.26,3.26 0 0 0 0.15,-5.931z" class="cls-2"/>
+    <path stroke="null" id="svg_8" d="m38.324767,71.989047a1,1 0 0 1 -1,-1l0,-17.639l-14.082,-7.221a1,1 0 1 1 0.914,-1.78l15.168,7.779l0,18.861a1,1 0 0 1 -1,1z" class="cls-3"/>
+    <ellipse stroke="null" id="svg_9" ry="3" rx="4.5" cy="44.989047" cx="22.824767" class="cls-1"/>
+    <circle stroke="null" id="svg_10" r="4" cy="72.989047" cx="38.324767" class="cls-4"/>
+   </g>
+  </g>
+  <text font-weight="bold" stroke="#000" transform="matrix(1.0463596347887285,0,0,0.9753898143484863,-464.25259843142805,-50.24595953796511) " xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="24" id="svg_12" y="72.208352" x="475.872498" stroke-width="0" fill="#000000">SGE</text>
+ </g>
+</svg>
