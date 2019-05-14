@@ -9,7 +9,7 @@ import { ALUNO, ALUNOS } from '../../../sge.mock';
 })
 export class ListAlunoComponent implements OnInit {
 
-  public alunos: Array<Aluno>  = ALUNOS
+  Array<Aluno> alunos = ALUNOS
 
   constructor() { }
 

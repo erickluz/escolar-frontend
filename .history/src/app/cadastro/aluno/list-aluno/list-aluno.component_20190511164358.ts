@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Aluno } from '../../../shared/aluno.model';
-import { ALUNO, ALUNOS } from '../../../sge.mock';
 
 @Component({
   selector: 'app-list-aluno',
@@ -9,7 +8,7 @@ import { ALUNO, ALUNOS } from '../../../sge.mock';
 })
 export class ListAlunoComponent implements OnInit {
 
-  public alunos: Array<Aluno>  = ALUNOS
+  Array<Aluno> alunos = 
 
   constructor() { }
 

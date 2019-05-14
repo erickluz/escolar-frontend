@@ -5,11 +5,11 @@
         Alunos Cadastrados
       </div>
       <div class="card-body">
-        <table class="table table-responsive-sm table-hover table-outline">
+        <table class="table table-bordered table-striped table-sm">
           <thead>
             <tr>
               <th>ID</th>
-              <th><i class="icon-people"></i>Nome</th>
+              <th>Nome</th>
               <th>RA</th>
               <th>E-Mail</th>
               <th>Data do cadastro</th>
@@ -24,26 +24,22 @@
               <td>{{aluno.email}}</td>
               <td>{{aluno.dataCadastro}}</td>
               <td>
-                <button type="button" class="btn btn-sm btn-ghost-info"><i
+                <button type="button" class="btn btn-sm btn-pill btn-danger"><i
                     class="icon-pencil icons d-block"></i>Editar</button>
-                <button type="button" class="btn btn-sm btn-ghost-warning"><i
-                    class="icon-magnifier icons d-block"></i>Detalhes</button>
-                <button type="button" class="btn btn-sm btn-ghost-danger"><i
-                      class="icon-ban icons d-block"></i>Desativar</button>
               </td>
             </tr>
           </tbody>
         </table>
         <nav>
           <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
+            <li class="page-item"><a class="page-link" href="#">Prev</a></li>
             <li class="page-item active">
               <a class="page-link" href="#">1</a>
             </li>
             <!-- <li class="page-item"><a class="page-link" href="#">2</a></li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
             <li class="page-item"><a class="page-link" href="#">4</a></li> -->
-            <li class="page-item"><a class="page-link" href="#">Proximo</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
           </ul>
         </nav>
       </div>
