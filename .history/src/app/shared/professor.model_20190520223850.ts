@@ -16,7 +16,6 @@ export class Professor extends Pessoa{
     telefone2: String
     dataCadastro: Date
     formacao: String
-    
     constructor(
         id: number,
         nome: String,

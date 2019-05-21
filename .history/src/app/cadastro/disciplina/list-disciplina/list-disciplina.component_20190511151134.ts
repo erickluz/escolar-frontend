@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DISCIPLINAS } from '../../../sge.mock';
-import { Disciplina } from '../../../shared/disciplina.model';
-
 
 @Component({
   selector: 'app-list-disciplina',
@@ -9,8 +6,6 @@ import { Disciplina } from '../../../shared/disciplina.model';
   styleUrls: ['./list-disciplina.component.scss']
 })
 export class ListDisciplinaComponent implements OnInit {
-
-  disciplinas : Array<Disciplina> = DISCIPLINAS
 
   constructor() { }
 

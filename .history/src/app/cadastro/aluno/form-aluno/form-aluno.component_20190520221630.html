@@ -1,4 +1,5 @@
-<form [formGroup]="formAluno" onSubmit="onSubtmit()">
+<form [formGroup]="formAluno">
+
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
@@ -83,7 +84,7 @@
 
       </div>
       <div class="card-footer">
-        <button type="submit" class="btn btn btn-primary" routerLink="/cadastro/lista-alunos"><i
+        <button type="submit" class="btn btn btn-primary" (click)="onSubmit()" routerLink="/cadastro/lista-alunos"><i
             class="fa fa-check"></i>
           Salvar</button>
         <!-- <i class="fa fa-dot-circle-o"></i>"  -->

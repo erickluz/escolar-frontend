@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DISCIPLINAS } from '../../../sge.mock';
-import { Disciplina } from '../../../shared/disciplina.model';
-
 
 @Component({
   selector: 'app-list-disciplina',

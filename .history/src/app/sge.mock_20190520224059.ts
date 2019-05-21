@@ -1,6 +1,5 @@
 import { Aluno } from "./shared/aluno.model";
 import { Professor } from "./shared/professor.model";
-import { Disciplina } from "./shared/disciplina.model";
 
 export const ALUNO: Aluno = {
     id: 1,
@@ -118,32 +117,3 @@ export const PROFESSORES: Array<Professor> = [{
     dataCadastro: new Date(),
     formacao: "Fisica"
 }]
-
-export const DISCIPLINA: Disciplina = {
-    id: 1,
-    nome: "Quimica",
-    dataCadastro: new Date(),
-    descricao: "Materia que explora reacoes da natureza"
-}
-
-export const DISCIPLINAS: Array<Disciplina> = [
-    {
-        id: 1,
-        nome: "Quimica",
-        dataCadastro: new Date(),
-        descricao: "Materia que explora reacoes da natureza"
-    },
-    {
-        id: 2,
-        nome: "Matematica",
-        dataCadastro : new Date(),
-        descricao: "Materia que explora atravez de calculos fenomenos ao nosso redor"
-    },
-    {
-        id: 3,
-        nome: "Fisica",
-        dataCadastro : new Date(),
-        descricao: "Materia que visa entender como a nossa realidade funciona"
-    }
-
-]

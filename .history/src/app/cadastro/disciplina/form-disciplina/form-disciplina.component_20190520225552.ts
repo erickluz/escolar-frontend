@@ -14,7 +14,7 @@ export class FormDisciplinaComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.createForm(new Disciplina(null, null, null, null))
+    this.createForm(null, null, null, null)
   }
 
   createForm(disciplina: Disciplina){

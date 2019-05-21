@@ -1,8 +1,11 @@
-<form [formGroup]="formAluno" onSubmit="onSubtmit()">
+<p>
+  form-professor works!
+</p>
+<form [formGroup]="formProfessor" onSubmit="onSubtmit()">
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
-        <strong>Formulario de aluno</strong>
+        <strong>Formulario de professores</strong>
       </div>
       <div class="card-body">
         <!-- <form action="" method="post" enctype="multipart/form-data" class="form-horizontal"> -->
@@ -10,12 +13,6 @@
           <label class="col-md-3 col-form-label">ID</label>
           <div class="col-md-9">
             <p class="form-control-static">--</p>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-md-3 col-form-label" for="nome">RA</label>
-          <div class="col-md-9">
-            <input type="text" id="ra" name="ra" class="form-control" formControlName="RA" disabled>
           </div>
         </div>
         <div class="form-group row">
@@ -80,7 +77,13 @@
               formControlName="telefone2">
           </div>
         </div>
-
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="senha">Formacao</label>
+          <div class="col-md-9">
+            <input type="text" id="formacao" name="formacao" class="form-control" placeholder="Insira a formacao"
+              formControlName="formacao">
+          </div>
+        </div>
       </div>
       <div class="card-footer">
         <button type="submit" class="btn btn btn-primary" routerLink="/cadastro/lista-alunos"><i
@@ -91,6 +94,6 @@
           Cancelar</button>
       </div>
     </div>
-    {{formAluno.value | json}}
+    {{formProfessor.value | json}}
   </div>
 </form>

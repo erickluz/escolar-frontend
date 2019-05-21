@@ -14,7 +14,6 @@ export class FormProfessorComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.createForm(new Professor(null, null, null, null, null, null, null, null, null, null, null, null))
   }
 
   createForm(professor: Professor){
@@ -32,10 +31,6 @@ export class FormProfessorComponent implements OnInit {
       dataCadastro: [professor.dataCadastro],
       formacao: [professor.formacao]
     })
-  }
-
-  onSubmit(){
-    console.log(JSON.stringify(this.formProfessor.value))
   }
 
 }

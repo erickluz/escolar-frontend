@@ -1,4 +1,5 @@
-<form [formGroup]="formAluno" onSubmit="onSubtmit()">
+<form [formGroup]="formAluno">
+
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
@@ -10,12 +11,6 @@
           <label class="col-md-3 col-form-label">ID</label>
           <div class="col-md-9">
             <p class="form-control-static">--</p>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-md-3 col-form-label" for="nome">RA</label>
-          <div class="col-md-9">
-            <input type="text" id="ra" name="ra" class="form-control" formControlName="RA" disabled>
           </div>
         </div>
         <div class="form-group row">
@@ -83,14 +78,13 @@
 
       </div>
       <div class="card-footer">
-        <button type="submit" class="btn btn btn-primary" routerLink="/cadastro/lista-alunos"><i
-            class="fa fa-check"></i>
-          Salvar</button>
+          <button type="submit" class="btn btn btn-primary" (click)="onSubmit()" routerLink="/cadastro/lista-alunos"><i class="fa fa-check"></i>
+            Salvar</button>         
         <!-- <i class="fa fa-dot-circle-o"></i>"  -->
         <button type="reset" class="btn btn btn-danger" routerLink="/cadastro/lista-alunos"><i class="fa fa-ban"></i>
           Cancelar</button>
       </div>
     </div>
-    {{formAluno.value | json}}
+    {{formAluno.value}}
   </div>
-</form>
+  </form>

@@ -14,7 +14,6 @@ export class FormProfessorComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.createForm(new Professor(null, null, null, null, null, null, null, null, null, null, null, null))
   }
 
   createForm(professor: Professor){

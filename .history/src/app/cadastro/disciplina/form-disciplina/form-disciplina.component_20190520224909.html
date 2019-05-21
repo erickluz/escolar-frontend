@@ -26,17 +26,16 @@
               placeholder="Descricao da disciplina" formControlName="descricao">
           </div>
         </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn btn-primary" routerLink="/cadastro/lista-professores"><i
+              class="fa fa-check"></i>
+            Salvar</button>
+          <!-- <i class="fa fa-dot-circle-o"></i>"  -->
+          <button type="reset" class="btn btn btn-danger" routerLink="/cadastro/lista-professores"><i
+              class="fa fa-ban"></i>
+            Cancelar</button>
+        </div>
       </div>
-      <div class="card-footer">
-        <button type="submit" class="btn btn btn-primary" routerLink="/cadastro/lista-professores"><i
-            class="fa fa-check"></i>
-          Salvar</button>
-        <!-- <i class="fa fa-dot-circle-o"></i>"  -->
-        <button type="reset" class="btn btn btn-danger" routerLink="/cadastro/lista-professores"><i
-            class="fa fa-ban"></i>
-          Cancelar</button>
-      </div>
+      {{formDisciplina.value | json}}
     </div>
-    {{formDisciplina.value | json}}
-  </div>
 </form>

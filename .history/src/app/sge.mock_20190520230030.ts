@@ -134,13 +134,13 @@ export const DISCIPLINAS: Array<Disciplina> = [
         descricao: "Materia que explora reacoes da natureza"
     },
     {
-        id: 2,
+        id: 1,
         nome: "Matematica",
         dataCadastro : new Date(),
         descricao: "Materia que explora atravez de calculos fenomenos ao nosso redor"
     },
     {
-        id: 3,
+        id: 1,
         nome: "Fisica",
         dataCadastro : new Date(),
         descricao: "Materia que visa entender como a nossa realidade funciona"
