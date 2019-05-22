@@ -2,7 +2,6 @@ import { Aluno } from "./shared/aluno.model";
 import { Professor } from "./shared/professor.model";
 import { Disciplina } from "./shared/disciplina.model";
 import { Curso } from './shared/curso.model';
-import { Turma } from './shared/turma.model';
 
 export const ALUNO: Aluno = {
     id: 1,
@@ -164,19 +163,4 @@ export const CURSOS: Array<Curso> = [
     }
 ]
 
-export const TURMA: Turma = {
-    id: 1, 
-    nome: "1-A",
-    dataInicio: new Date(),
-    local: "Pavilhao B"
-}
-
-export const TURMAS: Array<Turma> = [
-    TURMA,
-    {
-        id: 2,
-        nome: "1-B",
-        dataInicio: new Date(),
-        local: "Porao"
-    }
-]
+export const TURMA 

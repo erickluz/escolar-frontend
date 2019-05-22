@@ -1,8 +1,8 @@
-<form [formGroup]="formDisciplina" onSubmit="onSubtmit()">
+<form [formGroup]="formCurso" onSubmit="onSubtmit()">
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
-        <strong>Formulario de disciplina</strong>
+        <strong>Formulario de curso</strong>
       </div>
       <div class="card-body">
         <!-- <form action="" method="post" enctype="multipart/form-data" class="form-horizontal"> -->
@@ -23,10 +23,11 @@
           <label class="col-md-3 col-form-label" for="nome">Descricao</label>
           <div class="col-md-9">
             <input type="text" id="descricao" name="descricao" class="form-control"
-              placeholder="Descricao da disciplina" formControlName="descricao">
+              placeholder="Descricao da do curso" formControlName="descricaoCurso">
           </div>
         </div>
       </div>
+            
       <div class="card-footer">
         <button type="submit" class="btn btn btn-primary" routerLink="/cadastro/lista-professores"><i
             class="fa fa-check"></i>
@@ -37,6 +38,6 @@
           Cancelar</button>
       </div>
     </div>
-    {{formDisciplina.value | json}}
+    {{formCurso.value | json}}
   </div>
 </form>

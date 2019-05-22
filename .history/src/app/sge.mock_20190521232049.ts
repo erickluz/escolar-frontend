@@ -170,13 +170,3 @@ export const TURMA: Turma = {
     dataInicio: new Date(),
     local: "Pavilhao B"
 }
-
-export const TURMAS: Array<Turma> = [
-    TURMA,
-    {
-        id: 2,
-        nome: "1-B",
-        dataInicio: new Date(),
-        local: "Porao"
-    }
-]
