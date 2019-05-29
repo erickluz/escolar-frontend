@@ -11,6 +11,8 @@ import { DISCIPLINAS } from '../../../sge.mock';
 export class FormDisciplinaComponent implements OnInit {
 
   formDisciplina: FormGroup
+  disciplinas: Array<Disciplina> = DISCIPLINAS
+  items = [true, 'Two', 3];
 
   constructor(private formBuilder: FormBuilder) { }
 

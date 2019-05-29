@@ -15,7 +15,7 @@ export class FormCursoComponent implements OnInit {
   formCurso: FormGroup
   disciplinas: Array<Disciplina> = DISCIPLINAS
 
-  disciplina: NgOption[] = []
+  disciplina: NgOption[]
 
 
   constructor(private formBuilder: FormBuilder) { }

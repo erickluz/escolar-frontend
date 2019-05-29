@@ -26,8 +26,10 @@
               placeholder="Descricao da disciplina" formControlName="descricao">
           </div>
         </div>
-
-
+        <div class="form-group row">
+          <ng-select class="custom" [items]="disciplinas">
+          </ng-select>
+        </div>
       </div>
       <div class="card-footer">
         <button type="submit" class="btn btn btn-primary" routerLink="/cadastro/lista-professores"><i

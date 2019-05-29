@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Curso } from '../../../shared/curso.model';
 import { Disciplina } from '../../../shared/disciplina.model';
 import { DISCIPLINAS } from '../../../sge.mock';
-import { NgOption } from '@ng-select/ng-select';
 
 @Component({
   selector: 'app-form-curso',
@@ -11,27 +10,18 @@ import { NgOption } from '@ng-select/ng-select';
   styleUrls: ['./form-curso.component.scss']
 })
 export class FormCursoComponent implements OnInit {
-
+  
   formCurso: FormGroup
   disciplinas: Array<Disciplina> = DISCIPLINAS
-
-  disciplina: NgOption[] = []
-
 
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.createForm(new Curso(null, null, null, null))
-    let i: number
-
-    for(i=0;i<this.disciplinas.length;i++)
-      this.disciplina.push({value: this.disciplinas[i].id, label: this.disciplinas[i].nome.toString()})
-    
-
   }
 
 
-  createForm(curso: Curso) {
+  createForm(curso: Curso){
     this.formCurso = this.formBuilder.group({
       id: [curso.id],
       nome: [curso.nome],
@@ -40,7 +30,7 @@ export class FormCursoComponent implements OnInit {
     })
   }
 
-  onSubmit() {
+  onSubmit(){
     console.log(this.formCurso.value)
   }
 

@@ -27,17 +27,25 @@
           </div>
         </div>
         <div class="form-group row">
-          <div class="col-md-12">
-            <ng-select #agesSelect [items]="disciplina" [multiple]="true" [selectOnTab]="true" bindValue="value"
-              labelForId="disciplinas" placeholder="Selecione disciplinas" formControlName="disciplinas">
-
-            </ng-select>
-          </div>
+          <ng-select #agesSelect [items]="disciplinas" [selectOnTab]="true" bindValue="value" labelForId="age"
+            placeholder="Select age" formControlName="curso.disciplinas">
         </div>
+        </ng-select>
         <div class="form-group row">
           <div class="round">
+
+          </div>
+          <div class="form-group row">
+
+            <div class="col-md-12">
+              <select id="multiple-select" name="multiple-select" class="form-control" size="5" multiple>
+                <option *ngFor="let disciplina of disciplinas" value="{{disciplina.id}}">{{disciplina.id}} -
+                  {{disciplina.nome}}</option>
+              </select>
+            </div>
           </div>
         </div>
+
       </div>
 
       <div class="card-footer">
