@@ -14,6 +14,7 @@ export class FormCursoComponent implements OnInit {
 
   formCurso: FormGroup
   disciplinas: Array<Disciplina> = DISCIPLINAS
+
   disciplina: NgOption[] = []
 
 
@@ -23,9 +24,10 @@ export class FormCursoComponent implements OnInit {
     this.createForm(new Curso(null, null, null, null))
     
     for(let i=0;i<this.disciplinas.length;i++)
-      this.disciplina.push({value: this.disciplinas[i], label: this.disciplinas[i].nome.toString()})
+      this.disciplina.push({value: this.disciplinas[i].id, label: this.disciplinas[i].nome.toString()})
     
   }
+
 
   createForm(curso: Curso) {
     this.formCurso = this.formBuilder.group({
@@ -36,7 +38,7 @@ export class FormCursoComponent implements OnInit {
     })
   }
 
-  onSubmit() {    
+  onSubmit() {
     console.log(this.formCurso.value)
   }
 
