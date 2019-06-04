@@ -95,14 +95,14 @@ const routes: Routes = [
         }
       },
       {
-        path: 'form-matricula',
+        path: 'form-aluno/form-matricula',
         component: FormMatriculaComponent,
         data: {
           title: 'Fomulario de matricula'
         }
       },
       {
-        path: 'lista-matricula',
+        path: 'form-aluno/list-matricula',
         component: ListMatriculaComponent,
         data: {
           title: 'Matriculas'

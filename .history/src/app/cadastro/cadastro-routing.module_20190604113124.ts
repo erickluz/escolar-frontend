@@ -102,7 +102,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'lista-matricula',
+        path: 'list-matricula',
         component: ListMatriculaComponent,
         data: {
           title: 'Matriculas'

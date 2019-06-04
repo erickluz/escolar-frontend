@@ -10,8 +10,6 @@ import { ListCursosComponent } from './curso/list-cursos/list-cursos.component';
 import { ListTurmasComponent } from './turma/list-turmas/list-turmas.component';
 import { FormCursoComponent } from './curso/form-curso/form-curso.component';
 import { FormTurmaComponent } from './turma/form-turma/form-turma.component';
-import { FormMatriculaComponent } from './aluno/matricula/form-matricula/form-matricula.component';
-import { ListMatriculaComponent } from './aluno/matricula/list-matricula/list-matricula.component';
 
 const routes: Routes = [
   {
@@ -93,22 +91,8 @@ const routes: Routes = [
         data: {
           title: 'Fomulario de turma'
         }
-      },
-      {
-        path: 'form-matricula',
-        component: FormMatriculaComponent,
-        data: {
-          title: 'Fomulario de matricula'
-        }
-      },
-      {
-        path: 'lista-matricula',
-        component: ListMatriculaComponent,
-        data: {
-          title: 'Matriculas'
-        }
       }
-    
+      },
     ]
   }
 ];

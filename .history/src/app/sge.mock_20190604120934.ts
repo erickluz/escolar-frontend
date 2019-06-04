@@ -33,7 +33,7 @@ export const ALUNO: Aluno = {
     telefone2: "456",
     dataCadastro: new Date(),
     RA: "1111111",
-    matriculas: [MATRICULA1]
+    matriculas: [MATRICULA]
     
 }
 
@@ -50,7 +50,7 @@ export const ALUNOS: Array<Aluno> = [{
     telefone2: "456",
     dataCadastro: new Date(),
     RA: "1111111",
-    matriculas: [MATRICULA2]
+    matriculas: []
 },
 {
     id: 2,

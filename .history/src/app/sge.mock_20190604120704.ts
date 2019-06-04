@@ -6,15 +6,8 @@ import { Turma } from './shared/turma.model';
 import { Matricula } from './shared/matricula.model';
 
 
-export const MATRICULA1: Matricula = {
+export const MATRICULA: Matricula = {
     id: 1,
-    dataMatricula: new Date(),
-    dataEncerramento: new Date(),
-    status: "Em espera"
-}
-
-export const MATRICULA2: Matricula = {
-    id: 2,
     dataMatricula: new Date(),
     dataEncerramento: new Date(),
     status: "Em espera"
@@ -33,7 +26,7 @@ export const ALUNO: Aluno = {
     telefone2: "456",
     dataCadastro: new Date(),
     RA: "1111111",
-    matriculas: [MATRICULA1]
+    matriculas: [MATRICULA]
     
 }
 
@@ -50,7 +43,7 @@ export const ALUNOS: Array<Aluno> = [{
     telefone2: "456",
     dataCadastro: new Date(),
     RA: "1111111",
-    matriculas: [MATRICULA2]
+    matriculas: []
 },
 {
     id: 2,

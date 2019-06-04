@@ -1,6 +1,5 @@
 import { Matricula } from './matricula.model';
 import { Curso } from './curso.model';
-import { Aula } from './aula.model';
 
 export class Turma{
     id: number
@@ -9,7 +8,6 @@ export class Turma{
     local: String
     matriculas: Array<Matricula>
     curso: Curso
-    aulas: Array<Aula>
     constructor(id: number, nome: String, dataInicio: Date, local: String, matriculas: Array<Matricula>){
         this.id = id
         this.nome = nome

@@ -3,22 +3,6 @@ import { Professor } from "./shared/professor.model";
 import { Disciplina } from "./shared/disciplina.model";
 import { Curso } from './shared/curso.model';
 import { Turma } from './shared/turma.model';
-import { Matricula } from './shared/matricula.model';
-
-
-export const MATRICULA1: Matricula = {
-    id: 1,
-    dataMatricula: new Date(),
-    dataEncerramento: new Date(),
-    status: "Em espera"
-}
-
-export const MATRICULA2: Matricula = {
-    id: 2,
-    dataMatricula: new Date(),
-    dataEncerramento: new Date(),
-    status: "Em espera"
-}
 
 export const ALUNO: Aluno = {
     id: 1,
@@ -32,9 +16,7 @@ export const ALUNO: Aluno = {
     telefone1: "123",
     telefone2: "456",
     dataCadastro: new Date(),
-    RA: "1111111",
-    matriculas: [MATRICULA1]
-    
+    RA: "1111111"
 }
 
 export const ALUNOS: Array<Aluno> = [{
@@ -50,7 +32,7 @@ export const ALUNOS: Array<Aluno> = [{
     telefone2: "456",
     dataCadastro: new Date(),
     RA: "1111111",
-    matriculas: [MATRICULA2]
+    matriculas: []
 },
 {
     id: 2,

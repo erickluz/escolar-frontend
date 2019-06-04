@@ -32,8 +32,7 @@ export class FormAlunoComponent implements OnInit {
       telefone1: [aluno.telefone1],
       telefone2: [aluno.telefone2],
       dataCadastro: [aluno.dataCadastro],
-      RA: [aluno.RA],
-      matriculas: [aluno.matriculas]
+      RA: [aluno.RA]
     })
     console.log(JSON.stringify(aluno))
   }
