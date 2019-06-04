@@ -14,7 +14,7 @@ export class FormMatriculaComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.createForm(new Matricula(null, new Date(), null, null, null))
+    this.createForm(new Matricula(null, null, null, null, null))
   }
 
   createForm(matricula: Matricula){

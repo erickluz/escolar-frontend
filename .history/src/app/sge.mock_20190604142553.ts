@@ -8,7 +8,7 @@ import { Matricula } from './shared/matricula.model';
 export const DISCIPLINA: Disciplina = {
     id: 1,
     nome: "Quimica",
-    dataCadastro: new Date().toLocaleDateString(),
+    dataCadastro: new Date(),
     descricao: "Materia que explora reacoes da natureza"
 }
 
@@ -50,8 +50,8 @@ export const CURSOS: Array<Curso> = [
 
 export const MATRICULA1: Matricula = {
     id: 1,
-    dataMatricula: new Date().toLocaleDateString(),
-    dataEncerramento: new Date().toLocaleDateString(),
+    dataMatricula: new Date(),
+    dataEncerramento: new Date(),
     status: "Em espera",
     curso: CURSOS[0]
 }

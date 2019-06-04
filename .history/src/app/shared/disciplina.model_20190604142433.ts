@@ -1,13 +1,13 @@
 export class Disciplina{
     id: number
-    nome: string
+    nome: String
     dataCadastro: string
-    descricao: string
+    descricao: String
     constructor(
         id: number,
-        nome: string,
+        nome: String,
         dataCadastro: string,
-        descricao: string
+        descricao: String
     ){
         this.id = id
         this.nome = nome

@@ -110,7 +110,7 @@ const routes: Routes = [
       },
       {
         path: 'lista-matricula/:id',
-        component: ListMatriculaComponent,
+        component: FormMatriculaComponent,
         data: {
           title: 'Listagem de matricula'
         }

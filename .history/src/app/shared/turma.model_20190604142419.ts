@@ -4,13 +4,13 @@ import { Aula } from './aula.model';
 
 export class Turma{
     id: number
-    nome: string
+    nome: String
     dataInicio: string
-    local: string
+    local: String
     matriculas: Array<Matricula>
     curso: Curso
     aulas: Array<Aula>
-    constructor(id: number, nome: string, dataInicio: string, local: string, matriculas: Array<Matricula>){
+    constructor(id: number, nome: String, dataInicio: string, local: String, matriculas: Array<Matricula>){
         this.id = id
         this.nome = nome
         this.dataInicio = dataInicio

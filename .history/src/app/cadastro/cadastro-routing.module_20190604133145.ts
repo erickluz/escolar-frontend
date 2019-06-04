@@ -102,19 +102,20 @@ const routes: Routes = [
         }
       },
       {
+        path: 'form-matricula/:id',
+        component: FormMatriculaComponent,
+        data: {
+          title: 'Fomulario de matricula'
+        }
+      },
+      {
         path: 'lista-matricula',
         component: ListMatriculaComponent,
         data: {
           title: 'Matriculas'
         }
-      },
-      {
-        path: 'lista-matricula/:id',
-        component: ListMatriculaComponent,
-        data: {
-          title: 'Listagem de matricula'
-        }
-      },
+      }
+    
     ]
   }
 ];

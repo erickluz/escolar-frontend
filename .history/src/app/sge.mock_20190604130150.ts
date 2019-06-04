@@ -8,7 +8,7 @@ import { Matricula } from './shared/matricula.model';
 export const DISCIPLINA: Disciplina = {
     id: 1,
     nome: "Quimica",
-    dataCadastro: new Date().toLocaleDateString(),
+    dataCadastro: new Date(),
     descricao: "Materia que explora reacoes da natureza"
 }
 
@@ -16,19 +16,19 @@ export const DISCIPLINAS: Array<Disciplina> = [
     {
         id: 1,
         nome: "Quimica",
-        dataCadastro: new Date().toLocaleDateString(),
+        dataCadastro: new Date(),
         descricao: "Materia que explora reacoes da natureza"
     },
     {
         id: 2,
         nome: "Matematica",
-        dataCadastro : new Date().toLocaleDateString(),
+        dataCadastro : new Date(),
         descricao: "Materia que explora atravez de calculos fenomenos ao nosso redor"
     },
     {
         id: 3,
         nome: "Fisica",
-        dataCadastro : new Date().toLocaleDateString(),
+        dataCadastro : new Date(),
         descricao: "Materia que visa entender como a nossa realidade funciona"
     }
 ]
@@ -50,16 +50,16 @@ export const CURSOS: Array<Curso> = [
 
 export const MATRICULA1: Matricula = {
     id: 1,
-    dataMatricula: new Date().toLocaleDateString(),
-    dataEncerramento: new Date().toLocaleDateString(),
+    dataMatricula: new Date(),
+    dataEncerramento: new Date(),
     status: "Em espera",
     curso: CURSOS[0]
 }
 
 export const MATRICULA2: Matricula = {
     id: 2,
-    dataMatricula: new Date().toLocaleDateString(),
-    dataEncerramento: new Date().toLocaleDateString(),
+    dataMatricula: new Date(),
+    dataEncerramento: new Date(),
     status: "Em espera",
     curso: CURSOS[1]
 }
@@ -71,11 +71,11 @@ export const ALUNO: Aluno = {
     email: "erickluz360@gmail.com",
     senha: "123",
     cpf: "123",
-    dataNascimento: new Date().toLocaleDateString(),
+    dataNascimento: new Date(),
     endereco: "Rua 10",
     telefone1: "123",
     telefone2: "456",
-    dataCadastro: new Date().toLocaleDateString(),
+    dataCadastro: new Date(),
     RA: "1111111",
     matriculas: [MATRICULA1]
     
@@ -88,11 +88,11 @@ export const ALUNOS: Array<Aluno> = [{
     email: "erickluz360@gmail.com",
     senha: "123",
     cpf: "123",
-    dataNascimento: new Date().toLocaleDateString(),
+    dataNascimento: new Date(),
     endereco: "Rua 10",
     telefone1: "123",
     telefone2: "456",
-    dataCadastro: new Date().toLocaleDateString(),
+    dataCadastro: new Date(),
     RA: "1111111",
     matriculas: [MATRICULA2]
 },
@@ -103,11 +103,11 @@ export const ALUNOS: Array<Aluno> = [{
     email: "fernando@gmail.com",
     senha: "321",
     cpf: "312",
-    dataNascimento: new Date().toLocaleDateString(),
+    dataNascimento: new Date(),
     endereco: "Rua 1112",
     telefone1: "4444",
     telefone2: "422256",
-    dataCadastro: new Date().toLocaleDateString(),
+    dataCadastro: new Date(),
     RA: "2222222",
     matriculas: []
 },
@@ -118,11 +118,11 @@ export const ALUNOS: Array<Aluno> = [{
     email: "luizao@gmail.com",
     senha: "1234566",
     cpf: "1231412312",
-    dataNascimento: new Date().toLocaleDateString(),
+    dataNascimento: new Date(),
     endereco: "Rua das cassias",
     telefone1: "11111-33333",
     telefone2: "111232111",
-    dataCadastro: new Date().toLocaleDateString(),
+    dataCadastro: new Date(),
     RA: "333333333",
     matriculas: []
 }]
@@ -135,11 +135,11 @@ export const PROFESSOR: Professor = {
     email: "erickluz360@gmail.com",
     senha: "123",
     cpf: "123",
-    dataNascimento: new Date().toLocaleDateString(),
+    dataNascimento: new Date(),
     endereco: "Rua 10",
     telefone1: "123",
     telefone2: "456",
-    dataCadastro: new Date().toLocaleDateString(),
+    dataCadastro: new Date(),
     formacao: "Matematica"
 }
 
@@ -150,11 +150,11 @@ export const PROFESSORES: Array<Professor> = [{
     email: "erickluz360@gmail.com",
     senha: "123",
     cpf: "123",
-    dataNascimento: new Date().toLocaleDateString(),
+    dataNascimento: new Date(),
     endereco: "Rua 10",
     telefone1: "123",
     telefone2: "456",
-    dataCadastro: new Date().toLocaleDateString(),
+    dataCadastro: new Date(),
     formacao: "Quimica"
 },
 {
@@ -164,11 +164,11 @@ export const PROFESSORES: Array<Professor> = [{
     email: "fernando@gmail.com",
     senha: "321",
     cpf: "312",
-    dataNascimento: new Date().toLocaleDateString(),
+    dataNascimento: new Date(),
     endereco: "Rua 1112",
     telefone1: "4444",
     telefone2: "422256",
-    dataCadastro: new Date().toLocaleDateString(),
+    dataCadastro: new Date(),
     formacao: "Historia"
 },
 {
@@ -178,11 +178,11 @@ export const PROFESSORES: Array<Professor> = [{
     email: "luizao@gmail.com",
     senha: "1234566",
     cpf: "1231412312",
-    dataNascimento: new Date().toLocaleDateString(),
+    dataNascimento: new Date(),
     endereco: "Rua das cassias",
     telefone1: "11111-33333",
     telefone2: "111232111",
-    dataCadastro: new Date().toLocaleDateString(),
+    dataCadastro: new Date(),
     formacao: "Fisica"
 }]
 
@@ -191,7 +191,7 @@ export const PROFESSORES: Array<Professor> = [{
 export const TURMA: Turma = {
     id: 1, 
     nome: "1-A",
-    dataInicio: new Date().toLocaleDateString(),
+    dataInicio: new Date(),
     local: "Pavilhao B",
     matriculas: [],
     curso: null,
@@ -204,7 +204,7 @@ export const TURMAS: Array<Turma> = [
     {
         id: 2,
         nome: "1-B",
-        dataInicio: new Date().toLocaleDateString(),
+        dataInicio: new Date(),
         local: "Porao",
         matriculas: [],
         curso: null,

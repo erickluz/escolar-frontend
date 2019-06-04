@@ -8,7 +8,7 @@ import { Matricula } from './shared/matricula.model';
 export const DISCIPLINA: Disciplina = {
     id: 1,
     nome: "Quimica",
-    dataCadastro: new Date().toLocaleDateString(),
+    dataCadastro: new Date(),
     descricao: "Materia que explora reacoes da natureza"
 }
 

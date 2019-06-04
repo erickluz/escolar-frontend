@@ -14,7 +14,6 @@ export class FormMatriculaComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.createForm(new Matricula(null, new Date(), null, null, null))
   }
 
   createForm(matricula: Matricula){
@@ -25,10 +24,6 @@ export class FormMatriculaComponent implements OnInit {
       status: [matricula.status],
       curso: [matricula.curso]
     })
-  }
-
-  onSubmit(){
-    console.log(JSON.stringify(this.formMatricula.value))
   }
 
 }

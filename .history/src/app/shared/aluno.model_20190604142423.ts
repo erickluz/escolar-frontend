@@ -3,32 +3,32 @@ import { Matricula } from './matricula.model';
 
 export class Aluno extends Pessoa{
     id: number
-    nome: string
-    sobrenome: string
-    email: string
-    senha: string
-    cpf: string
+    nome: String
+    sobrenome: String
+    email: String
+    senha: String
+    cpf: String
     dataNascimento: string
-    endereco: string
-    telefone1: string
-    telefone2: string
+    endereco: String
+    telefone1: String
+    telefone2: String
     dataCadastro: string
-    RA: string
+    RA: String
     matriculas: Array<Matricula>
 
     constructor(
         id: number,
-        nome: string,
-        sobrenome: string,
-        email: string,
-        senha: string,
-        cpf: string,
+        nome: String,
+        sobrenome: String,
+        email: String,
+        senha: String,
+        cpf: String,
         dataNascimento: string,
-        endereco: string,
-        telefone1: string,
-        telefone2: string,
+        endereco: String,
+        telefone1: String,
+        telefone2: String,
         dataCadastro: string,
-        RA: string,
+        RA: String,
         matriculas: Array<Matricula>
     ){
         super(id, nome, sobrenome, email, senha, cpf, dataNascimento, endereco, telefone1, telefone2, dataCadastro)
