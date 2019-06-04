@@ -24,6 +24,8 @@ export class FormMatriculaComponent implements OnInit {
     this.cursos.map(curso => {
       this.cursoOp.push({value: curso, label: curso.nome.toString()})
     })
+    // for(let i=0;i<this.cursos.length;i++)
+    //   this.cursoOp.push({value: this.cursos[i], label: this.cursos[i].nome.toString()})
   }
 
   createForm(matricula: Matricula){

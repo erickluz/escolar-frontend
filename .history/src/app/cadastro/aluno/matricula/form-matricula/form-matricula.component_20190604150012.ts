@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Matricula } from '../../../../shared/matricula.model';
 import { CURSOS } from '../../../../sge.mock';
 import { Curso } from '../../../../shared/curso.model';
-import { NgOption } from '@ng-select/ng-select';
 
 @Component({
   selector: 'app-form-matricula',
@@ -15,15 +14,11 @@ export class FormMatriculaComponent implements OnInit {
   formMatricula: FormGroup
 
   cursos: Array<Curso> = CURSOS
-  cursoOp: NgOption[] = []
 
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.createForm(new Matricula(null, new Date().toLocaleDateString(), null, null, null))
-    this.cursos.map(curso => {
-      this.cursoOp.push({value: curso, label: curso.nome.toString()})
-    })
   }
 
   createForm(matricula: Matricula){
@@ -34,7 +29,7 @@ export class FormMatriculaComponent implements OnInit {
       status: [matricula.status],
       curso: [matricula.curso]
     })
-    this.formMatricula.controls['status'].setValue("Em espera")
+    this.formMatricula.value['status'] = "Em espera"
   }
 
   onSubmit(){

@@ -21,9 +21,6 @@ export class FormMatriculaComponent implements OnInit {
 
   ngOnInit() {
     this.createForm(new Matricula(null, new Date().toLocaleDateString(), null, null, null))
-    this.cursos.map(curso => {
-      this.cursoOp.push({value: curso, label: curso.nome.toString()})
-    })
   }
 
   createForm(matricula: Matricula){

@@ -1,0 +1,34 @@
+<form [formGroup]="formMatricula" onSubmit="onSubtmit()">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <strong>Formulario de matricula</strong>
+      </div>
+      <div class="card-body">
+        <!-- <form action="" method="post" enctype="multipart/form-data" class="form-horizontal"> -->
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label">ID</label>
+          <div class="col-md-9">
+            <p class="form-control-static">{{formMatricula.value.id}}</p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="dataMatricula">Data matricula</label>
+          <div class="col-md-9">
+            <input class="form-control" id="dataMatricula" type="date" name="dataMatricula"
+              placeholder="Data matricula" formControlName="dataMatricula">
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn btn-primary" routerLink="/cadastro/lista-alunos"><i
+            class="fa fa-check"></i>
+          Salvar</button>
+        <!-- <i class="fa fa-dot-circle-o"></i>"  -->
+        <button type="reset" class="btn btn btn-danger" routerLink="/cadastro/lista-alunos"><i class="fa fa-ban"></i>
+          Cancelar</button>
+      </div>
+    </div>
+    {{formMatricula.value | json}}
+  </div>
+</form>
