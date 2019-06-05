@@ -2,10 +2,7 @@ import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { Turma } from '../../../shared/turma.model';
 import { Matricula } from '../../../shared/matricula.model';
-import { MATRICULA1, ALUNO, ALUNOS, CURSOS } from '../../../sge.mock';
-import { Aluno } from '../../../shared/aluno.model';
-import { NgOption } from '@ng-select/ng-select';
-import { Curso } from '../../../shared/curso.model';
+import { MATRICULA1 } from '../../../sge.mock';
 
 @Component({
   selector: 'app-form-turma',
@@ -14,23 +11,11 @@ import { Curso } from '../../../shared/curso.model';
 })
 export class FormTurmaComponent implements OnInit {
   formTurma: FormGroup
-  alunos: Array<Aluno> = ALUNOS
-  alunosCad: Array<Aluno> = []
-  alunosOp: NgOption[] = []
-  resposta: string = ""
-  cursoOP: NgOption[] = []
-  cursos: Array<Curso> = CURSOS
-
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.createForm(new Turma(null, null, null, null, null))
-    this.alunos.map(aluno => {
-      this.alunosOp.push({value: aluno, label: aluno.id + " " + aluno.nome + " " + aluno.sobrenome})
-    })
-    this.cursos.map(curso => {
-      this.cursoOP.push({value: curso, label: curso.nome})
-    })
+    // console.log(this.formTurma.controls['matricula'].v)
   }
 
   createForm(turma: Turma){
@@ -41,14 +26,15 @@ export class FormTurmaComponent implements OnInit {
       local: [turma.local],
       curso: [turma.curso],
       aulas: [turma.aulas],
-      matriculas: [turma.matriculas]
+      matriculas: this.formBuilder.array([this.formBuilder.group(MATRICULA1)])
     })
+    // this.formTurma.controls['matriculas'].setValue([MATRICULA1])
+
   }
 
-  adicionaAluno(valor: Event){
-    if (valor != undefined)
-      this.alunosCad.push(valor['value'])
-    this.formTurma.controls['matriculas'].setValue(this.alunosCad)
+  get getMatriculas(): Array<Matricula> {
+    console.log("Erick")
+    return this.formTurma.controls['matriculas'].value as Array<Matricula>
   }
 
   onSubmit(){

@@ -193,7 +193,7 @@ export const TURMA: Turma = {
     nome: "1-A",
     dataInicio: new Date().toLocaleDateString(),
     local: "Pavilhao B",
-    matriculas: [],
+    alunos: [],
     curso: null,
     aulas: []
 }
@@ -205,7 +205,7 @@ export const TURMAS: Array<Turma> = [
         nome: "1-B",
         dataInicio: new Date().toLocaleDateString(),
         local: "Porao",
-        matriculas: [],
+        alunos: [],
         curso: null,
         aulas: []
     }

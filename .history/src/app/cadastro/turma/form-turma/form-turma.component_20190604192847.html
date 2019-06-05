@@ -34,17 +34,9 @@
           </div>
         </div>
         <div class="form-group row">
-            <label class="col-md-3 col-form-label" for="curso">Curso</label>
-          <div class="col-md-9">
-              
-            <ng-select [items]="cursoOP" [selectOnTab]="true" bindValue="value" labelForId="curso"
-              placeholder="Selecione o curso" formControlName="curso">
-
-            </ng-select>
-          </div>
-        </div>
-        <div class="form-group row">
           <div class="col-lg-12">
+
+
             <div class="card">
               <div class="card-header">
                 <i class="fa fa-align-justify"></i> Alunos da turma
@@ -52,8 +44,9 @@
               <div class="card-body">
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <ng-select #agesSelect (change)="adicionaAluno($event)" [items]="alunosOp" [selectOnTab]="true"
-                      bindValue="value" labelForId="alunos" placeholder="Procure por alunos">
+                    Disciplinas do curso:
+                    <ng-select #agesSelect (change)="adicionaAluno($event)" [bindValue]="resposta" [items]="alunosOp" [selectOnTab]="true" bindValue="value" labelForId="alunos"
+                      placeholder="Procure por alunos">
                     </ng-select>
                   </div>
                 </div>
@@ -74,13 +67,13 @@
                       <td>{{aluno.nome}}</td>
                       <td>{{aluno.RA}}</td>
                       <td>{{aluno.cpf}}</td>
-                      <td><button type="button" class="btn btn-sm btn-ghost-danger"><i class="icon-close"></i></button>
-                      </td>
+                      <td><button type="button" class="btn btn-sm btn-ghost-info"><i
+                        class="icon-pencil"></i></button></td>
                     </tr>
 
                   </tbody>
                 </table>
-
+                
                 <nav>
                   <ul class="pagination">
                     <li class="page-item"><a class="page-link" href="#">Prev</a></li>
@@ -108,7 +101,7 @@
         <!-- <input type="submit" value="Salvar"> -->
         <!-- <i class="fa fa-dot-circle-o"></i>"  -->
         <button type="reset" class="btn btn btn-danger" routerLink="/cadastro/lista-turmas"><i class="fa fa-ban"></i>
-          Cancelar</button>
+          Cancelar</button>          
       </div>
     </div>
     {{formTurma.value | json}}

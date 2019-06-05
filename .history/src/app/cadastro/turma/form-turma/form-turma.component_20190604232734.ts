@@ -2,7 +2,7 @@ import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { Turma } from '../../../shared/turma.model';
 import { Matricula } from '../../../shared/matricula.model';
-import { MATRICULA1, ALUNO, ALUNOS, CURSOS } from '../../../sge.mock';
+import { MATRICULA1, ALUNO, ALUNOS } from '../../../sge.mock';
 import { Aluno } from '../../../shared/aluno.model';
 import { NgOption } from '@ng-select/ng-select';
 import { Curso } from '../../../shared/curso.model';
@@ -19,7 +19,7 @@ export class FormTurmaComponent implements OnInit {
   alunosOp: NgOption[] = []
   resposta: string = ""
   cursoOP: NgOption[] = []
-  cursos: Array<Curso> = CURSOS
+  cursos: Array<Curso>
 
   constructor(private formBuilder: FormBuilder) { }
 

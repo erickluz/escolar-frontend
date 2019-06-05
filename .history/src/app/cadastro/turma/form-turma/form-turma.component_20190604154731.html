@@ -34,53 +34,65 @@
           </div>
         </div>
         <div class="form-group row">
-            <label class="col-md-3 col-form-label" for="curso">Curso</label>
-          <div class="col-md-9">
-              
-            <ng-select [items]="cursoOP" [selectOnTab]="true" bindValue="value" labelForId="curso"
-              placeholder="Selecione o curso" formControlName="curso">
-
-            </ng-select>
-          </div>
-        </div>
-        <div class="form-group row">
+          
           <div class="col-lg-12">
             <div class="card">
               <div class="card-header">
                 <i class="fa fa-align-justify"></i> Alunos da turma
               </div>
               <div class="card-body">
-                <div class="form-group row">
-                  <div class="col-md-12">
-                    <ng-select #agesSelect (change)="adicionaAluno($event)" [items]="alunosOp" [selectOnTab]="true"
-                      bindValue="value" labelForId="alunos" placeholder="Procure por alunos">
-                    </ng-select>
-                  </div>
-                </div>
                 <table class="table table-bordered table-striped table-sm">
                   <thead>
                     <tr>
-                      <th>ID</th>
-                      <th>Nome</th>
-                      <th>RA</th>
-                      <th>CPF</th>
-                      <th></th>
+                      <th>Username</th>
+                      <th>Date registered</th>
+                      <th>Role</th>
+                      <th>Status</th>
                     </tr>
                   </thead>
                   <tbody>
-
-                    <tr *ngFor="let aluno of alunosCad">
-                      <td>{{aluno.id}}</td>
-                      <td>{{aluno.nome}}</td>
-                      <td>{{aluno.RA}}</td>
-                      <td>{{aluno.cpf}}</td>
-                      <td><button type="button" class="btn btn-sm btn-ghost-danger"><i class="icon-close"></i></button>
+                    <tr>
+                      <td>Vishnu Serghei</td>
+                      <td>2012/01/01</td>
+                      <td>Member</td>
+                      <td>
+                        <span class="badge badge-success">Active</span>
                       </td>
                     </tr>
-
+                    <tr>
+                      <td>Zbyněk Phoibos</td>
+                      <td>2012/02/01</td>
+                      <td>Staff</td>
+                      <td>
+                        <span class="badge badge-danger">Banned</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Einar Randall</td>
+                      <td>2012/02/01</td>
+                      <td>Admin</td>
+                      <td>
+                        <span class="badge badge-secondary">Inactive</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Félix Troels</td>
+                      <td>2012/03/01</td>
+                      <td>Member</td>
+                      <td>
+                        <span class="badge badge-warning">Pending</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Aulus Agmundr</td>
+                      <td>2012/01/21</td>
+                      <td>Staff</td>
+                      <td>
+                        <span class="badge badge-success">Active</span>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
-
                 <nav>
                   <ul class="pagination">
                     <li class="page-item"><a class="page-link" href="#">Prev</a></li>
@@ -100,14 +112,15 @@
 
         </div>
       </div>
-
+            
       <div class="card-footer">
         <button type="submit" class="btn btn btn-primary" routerLink="/cadastro/lista-turmas"><i
             class="fa fa-check"></i>
           Salvar</button>
-        <!-- <input type="submit" value="Salvar"> -->
+          <!-- <input type="submit" value="Salvar"> -->
         <!-- <i class="fa fa-dot-circle-o"></i>"  -->
-        <button type="reset" class="btn btn btn-danger" routerLink="/cadastro/lista-turmas"><i class="fa fa-ban"></i>
+        <button type="reset" class="btn btn btn-danger" routerLink="/cadastro/lista-turmas"><i
+            class="fa fa-ban"></i>
           Cancelar</button>
       </div>
     </div>
