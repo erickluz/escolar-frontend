@@ -8,8 +8,6 @@ import { NgOption } from '@ng-select/ng-select';
 import { Curso } from '../../../shared/curso.model';
 import { Aula } from '../../../shared/aula.model';
 import { ModalDirective } from 'ngx-bootstrap/modal';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Professor } from '../../../shared/professor.model';
 
 @Component({
   selector: 'app-form-turma',
@@ -28,9 +26,9 @@ export class FormTurmaComponent implements OnInit {
   cursoOP: NgOption[] = []
   cursos: Array<Curso> = CURSOS
   aulas: Array<Aula> = [AULA1, AULA2]
-  professores: Array<Professor>
   
-  constructor(private formBuilder: FormBuilder, private modalService: NgbModal) { }
+
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.createForm(new Turma(null, null, null, null, null))
@@ -77,10 +75,6 @@ export class FormTurmaComponent implements OnInit {
   removeAulas(valor: Event){
     let index = parseInt((<HTMLInputElement>valor.target).id)
     this.aulas.splice(index, 1)
-  }
-
-  openVerticallyCentered(content) {
-    this.modalService.open(content, { centered: true });
   }
 
 }

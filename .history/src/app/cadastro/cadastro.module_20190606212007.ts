@@ -39,7 +39,7 @@ import { FormMatriculaComponent } from './aluno/matricula/form-matricula/form-ma
     CadastroRoutingModule,
     ReactiveFormsModule,
     NgSelectModule,
-    NgbModule
+    NgbModal
   ]
 })
 export class CadastroModule { }

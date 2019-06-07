@@ -216,7 +216,7 @@ export const AULA1: Aula = {
     id: 1,
     horaInicio: new Date().toLocaleDateString(),
     horaFim: new Date().toLocaleDateString(),
-    professores: [PROFESSOR],
+    professores: [],
     disciplina: DISCIPLINA
 }
 
@@ -224,6 +224,6 @@ export const AULA2: Aula = {
     id: 1,
     horaInicio: new Date().toLocaleDateString(),
     horaFim: new Date().toLocaleDateString(),
-    professores: [PROFESSORES[2]],
+    professores: [],
     disciplina: DISCIPLINAS[2]
 }

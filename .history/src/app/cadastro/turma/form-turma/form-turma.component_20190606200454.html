@@ -1,27 +1,3 @@
-
-<ng-template #content let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title">Nova aula</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-        <div class="form-group row">
-            <div class="col-md-12">
-              <ng-select #agesSelect (change)="adicionaAluno($event)" [items]="alunosOp" [selectOnTab]="true"
-                bindValue="value" labelForId="alunos" placeholder="Procure por alunos">
-              </ng-select>
-            </div>
-          </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
-    </div>
-  </ng-template>
-
-
-
 <form [formGroup]="formTurma" (ngSubmit)="onSubmit()">
   <div class="col-md-12">
     <div class="card">
@@ -81,7 +57,8 @@
                 </div>
                 <table class="table table-bordered table-striped table-sm">
                   <thead>
-                    <tr>
+                    <tr>         
+                      <th>#</th>             
                       <th>ID</th>
                       <th>Nome</th>
                       <th>RA</th>
@@ -91,12 +68,13 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let aluno of alunosCad; let i = index">
+                      <td>{{i}}</td>
                       <td>{{aluno.id}}</td>
                       <td>{{aluno.nome}}</td>
                       <td>{{aluno.RA}}</td>
                       <td>{{aluno.cpf}}</td>
-                      <td><button id="{{i}}" type="button" class="btn btn-sm btn-ghost-danger"
-                          (click)="removeAluno($event)"><i id="{{i}}" class="icon-close"></i></button>
+                      <td><button type="button" class="btn btn-sm btn-ghost-danger" (click)="removeAluno()"><i
+                            class="icon-close"></i></button>
                       </td>
                     </tr>
                   </tbody>
@@ -112,12 +90,10 @@
                 <i class="fa fa-table"></i> Aulas da turma
               </div>
               <div class="card-body">
-                  <button type="button" class="btn btn btn-primary" (click)="openVerticallyCentered(content)">
-                  Nova Aula + </button><hr>
                 <table class="table table-bordered table-striped table-sm">
                   <thead>
                     <tr>
-                      <th>#</th>
+                      <th>ID</th>
                       <th>Hora de inicio</th>
                       <th>Hora de termino</th>
                       <th>Professor</th>
@@ -126,14 +102,14 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let aula of aulas; let i = index">
-                      <td>{{i}}</td>
+                    <tr *ngFor="let aula of aulas">
+                      <td>{{aula.id}}</td>
                       <td>{{aula.horaInicio}}</td>
                       <td>{{aula.horaFim}}</td>
-                      <td>{{aula.professores[0].nome}}</td> <!-- Ver oque devo fazer nessa linha-->
+                      <td>{{aula.professores[0]}}</td> <!-- Ver oque devo fazer nessa linha-->
                       <td>{{aula.disciplina.nome}}</td>
-                      <td><button id="{{i}}" type="button" class="btn btn-sm btn-ghost-danger"
-                          (click)="removeAulas($event)"><i id="{{i}}" class="icon-close"></i></button>
+                      <td><button type="button" class="btn btn-sm btn-ghost-danger" (click)="removeAluno()"><i
+                            class="icon-close"></i></button>
                       </td>
                     </tr>
                   </tbody>

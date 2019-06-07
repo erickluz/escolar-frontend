@@ -2,7 +2,7 @@ import { Professor } from './professor.model';
 import { Disciplina } from './disciplina.model';
 
 export class Aula{
-
+    
     id: number
     horaInicio: string
     horaFim: string
@@ -13,7 +13,5 @@ export class Aula{
         this.id = id
         this.horaInicio = horaInicio
         this.horaFim = horaFim
-        this.professores = professores
-        this.disciplina = disciplina
     }
 }

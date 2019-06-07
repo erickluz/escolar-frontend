@@ -14,7 +14,7 @@ import { FormTurmaComponent } from './turma/form-turma/form-turma.component';
 import { ListCursosComponent } from './curso/list-cursos/list-cursos.component';
 import { ListTurmasComponent } from './turma/list-turmas/list-turmas.component';
 import { NgSelectModule } from '@ng-select/ng-select';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ListMatriculaComponent } from './aluno/matricula/list-matricula/list-matricula.component';
 import { FormMatriculaComponent } from './aluno/matricula/form-matricula/form-matricula.component';
 
@@ -39,7 +39,7 @@ import { FormMatriculaComponent } from './aluno/matricula/form-matricula/form-ma
     CadastroRoutingModule,
     ReactiveFormsModule,
     NgSelectModule,
-    NgbModule
+    NgbModal
   ]
 })
 export class CadastroModule { }

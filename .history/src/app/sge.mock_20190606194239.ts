@@ -4,7 +4,6 @@ import { Disciplina } from "./shared/disciplina.model";
 import { Curso } from './shared/curso.model';
 import { Turma } from './shared/turma.model';
 import { Matricula } from './shared/matricula.model';
-import { Aula } from './shared/aula.model';
 
 export const DISCIPLINA: Disciplina = {
     id: 1,
@@ -196,7 +195,8 @@ export const TURMA: Turma = {
     local: "Pavilhao B",
     matriculas: [],
     curso: null,
-    aulas: []
+    aulas: [],
+    professores: [],
 }
 
 export const TURMAS: Array<Turma> = [
@@ -211,19 +211,3 @@ export const TURMAS: Array<Turma> = [
         aulas: []
     }
 ]
-
-export const AULA1: Aula = {
-    id: 1,
-    horaInicio: new Date().toLocaleDateString(),
-    horaFim: new Date().toLocaleDateString(),
-    professores: [PROFESSOR],
-    disciplina: DISCIPLINA
-}
-
-export const AULA2: Aula = {
-    id: 1,
-    horaInicio: new Date().toLocaleDateString(),
-    horaFim: new Date().toLocaleDateString(),
-    professores: [PROFESSORES[2]],
-    disciplina: DISCIPLINAS[2]
-}

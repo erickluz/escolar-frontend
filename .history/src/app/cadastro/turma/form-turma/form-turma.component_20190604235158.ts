@@ -1,15 +1,11 @@
-import { Component, OnInit, Pipe, PipeTransform, ViewChild } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { Turma } from '../../../shared/turma.model';
 import { Matricula } from '../../../shared/matricula.model';
-import { MATRICULA1, ALUNO, ALUNOS, CURSOS, AULA2, AULA1 } from '../../../sge.mock';
+import { MATRICULA1, ALUNO, ALUNOS, CURSOS } from '../../../sge.mock';
 import { Aluno } from '../../../shared/aluno.model';
 import { NgOption } from '@ng-select/ng-select';
 import { Curso } from '../../../shared/curso.model';
-import { Aula } from '../../../shared/aula.model';
-import { ModalDirective } from 'ngx-bootstrap/modal';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Professor } from '../../../shared/professor.model';
 
 @Component({
   selector: 'app-form-turma',
@@ -17,20 +13,15 @@ import { Professor } from '../../../shared/professor.model';
   styleUrls: ['./form-turma.component.scss']
 })
 export class FormTurmaComponent implements OnInit {
-  @ViewChild('myModal') public myModal: ModalDirective;
-  @ViewChild('largeModal') public largeModal: ModalDirective;
-
   formTurma: FormGroup
   alunos: Array<Aluno> = ALUNOS
-  alunosCad: Array<Aluno> = ALUNOS
+  alunosCad: Array<Aluno> = []
   alunosOp: NgOption[] = []
   resposta: string = ""
   cursoOP: NgOption[] = []
   cursos: Array<Curso> = CURSOS
-  aulas: Array<Aula> = [AULA1, AULA2]
-  professores: Array<Professor>
-  
-  constructor(private formBuilder: FormBuilder, private modalService: NgbModal) { }
+
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.createForm(new Turma(null, null, null, null, null))
@@ -57,30 +48,15 @@ export class FormTurmaComponent implements OnInit {
   adicionaAluno(valor: Event){
     if (valor != undefined)
       this.alunosCad.push(valor['value'])
+    this.formTurma.controls['matriculas'].setValue(this.alunosCad)
   }
 
   onSubmit(){
-    let matriculas: Array<Matricula>
-    this.alunosCad.map(aluno => {
-        matriculas.push(aluno.matriculas[0])
-    })
-    this.formTurma.controls['matriculas'].setValue(matriculas)
-
     console.log(this.formTurma.value)
   }
 
-  removeAluno(valor: Event){
-    let index = parseInt((<HTMLInputElement>valor.target).id)
-    this.alunosCad.splice(index, 1)
-  }
-
-  removeAulas(valor: Event){
-    let index = parseInt((<HTMLInputElement>valor.target).id)
-    this.aulas.splice(index, 1)
-  }
-
-  openVerticallyCentered(content) {
-    this.modalService.open(content, { centered: true });
+  removeAluno(){
+    console.log("erick")
   }
 
 }
