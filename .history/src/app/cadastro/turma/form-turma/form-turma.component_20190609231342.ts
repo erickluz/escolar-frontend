@@ -2,7 +2,7 @@ import { Component, OnInit, Pipe, PipeTransform, ViewChild } from '@angular/core
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { Turma } from '../../../shared/turma.model';
 import { Matricula } from '../../../shared/matricula.model';
-import { MATRICULA1, ALUNO, ALUNOS, CURSOS, AULA2, AULA1, PROFESSORES, DISCIPLINAS } from '../../../sge.mock';
+import { MATRICULA1, ALUNO, ALUNOS, CURSOS, AULA2, AULA1 } from '../../../sge.mock';
 import { Aluno } from '../../../shared/aluno.model';
 import { NgOption } from '@ng-select/ng-select';
 import { Curso } from '../../../shared/curso.model';
@@ -10,7 +10,6 @@ import { Aula } from '../../../shared/aula.model';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Professor } from '../../../shared/professor.model';
-import { Disciplina } from '../../../shared/disciplina.model';
 
 @Component({
   selector: 'app-form-turma',
@@ -22,47 +21,40 @@ export class FormTurmaComponent implements OnInit {
   @ViewChild('largeModal') public largeModal: ModalDirective;
 
   formTurma: FormGroup
-  formAula: FormGroup
-
-  // MOCK
   alunos: Array<Aluno> = ALUNOS
   alunosCad: Array<Aluno> = ALUNOS
-  aulasCad: Array<Aula> = [AULA1, AULA2]
-  cursos: Array<Curso> = CURSOS
-  professores: Array<Professor> = PROFESSORES
-  disciplina: Array<Disciplina> = DISCIPLINAS
-
   alunosOp: NgOption[] = []
-  cursoOp: NgOption[] = []
-  professoresOp: NgOption[] = []
-  disciplinaOp: NgOption[] = []
-
+  resposta: string = ""
+  cursoOP: NgOption[] = []
+  cursos: Array<Curso> = CURSOS
+  aulas: Array<Aula> = [AULA1, AULA2]
+  professores: Array<Professor>
   
+  formAula: FormGroup
+  aula: Aula
   
 
   constructor(private formBuilder: FormBuilder, private modalService: NgbModal) { }
 
   ngOnInit() {
-    // Criando formularios reativos
-    this.createFormTurma(new Turma(null, null, null, null, null))    
-    this.createFormAula(new Aula(null, null, null, null, null))
-
-    // Alimentando combos
+    this.createForm(new Turma(null, null, null, null, null))    
+    this.aula = new Aula(null, null, null, null, null)
+    this.formAula = this.formBuilder.group({
+      id: [this.aula.id],
+      horaInicio: [this.aula.horaInicio],
+      horaFim: [this.aula.horaFim],
+      professores: [this.aula.professores],
+      disciplina: [this.aula.disciplina]
+    });
     this.alunos.map(aluno => {
       this.alunosOp.push({value: aluno, label: aluno.id + " " + aluno.nome + " " + aluno.sobrenome})
     })
     this.cursos.map(curso => {
-      this.cursoOp.push({value: curso, label: curso.nome})
-    })
-    this.professores.map(professor => {
-      this.professoresOp.push({value: professor, label: professor.nome})
-    })
-    this.disciplina.map(disciplina => {
-      this.disciplinaOp.push({value: disciplina, label: disciplina.nome})
+      this.cursoOP.push({value: curso, label: curso.nome})
     })
   }
 
-  createFormTurma(turma: Turma){
+  createForm(turma: Turma){
     this.formTurma = this.formBuilder.group({
       id: [turma.id],
       nome: [turma.nome],
@@ -74,23 +66,13 @@ export class FormTurmaComponent implements OnInit {
     })
   }
 
-  createFormAula(aula: Aula){
-    this.formAula = this.formBuilder.group({
-      id: [aula.id],
-      horaInicio: [aula.horaInicio],
-      horaFim: [aula.horaFim],
-      professores: [aula.professores],
-      disciplina: [aula.disciplina]
-    });
+  createItem(): FormGroup {
+    return 
   }
 
   adicionaAluno(valor: Event){
     if (valor != undefined)
       this.alunosCad.push(valor['value'])
-  }
-
-  adicionaAula(){
-    this.aulasCad.push(this.formAula.value)
   }
 
   onSubmit(){
@@ -109,11 +91,10 @@ export class FormTurmaComponent implements OnInit {
 
   removeAulas(valor: Event){
     let index = parseInt((<HTMLInputElement>valor.target).id)
-    this.aulasCad.splice(index, 1)
+    this.aulas.splice(index, 1)
   }
 
   openVerticallyCentered(content) {
     this.modalService.open(content, { centered: true });
-  }  
-
+  }
 }

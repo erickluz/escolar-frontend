@@ -214,8 +214,8 @@ export const TURMAS: Array<Turma> = [
 
 export const AULA1: Aula = {
     id: 1,
-    horaInicio: new Date().toLocaleTimeString(),
-    horaFim: new Date().toLocaleTimeString(),
+    horaInicio: new Date().toLocaleDateString(),
+    horaFim: new Date().toLocaleDateString(),
     professores: [PROFESSOR],
     disciplina: DISCIPLINA
 }

@@ -89,10 +89,6 @@ export class FormTurmaComponent implements OnInit {
       this.alunosCad.push(valor['value'])
   }
 
-  adicionaAula(){
-    this.aulasCad.push(this.formAula.value)
-  }
-
   onSubmit(){
     let matriculas: Array<Matricula>
     this.alunosCad.map(aluno => {
@@ -114,6 +110,5 @@ export class FormTurmaComponent implements OnInit {
 
   openVerticallyCentered(content) {
     this.modalService.open(content, { centered: true });
-  }  
-
+  }
 }

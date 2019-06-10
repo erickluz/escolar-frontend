@@ -2,7 +2,7 @@ import { Component, OnInit, Pipe, PipeTransform, ViewChild } from '@angular/core
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { Turma } from '../../../shared/turma.model';
 import { Matricula } from '../../../shared/matricula.model';
-import { MATRICULA1, ALUNO, ALUNOS, CURSOS, AULA2, AULA1, PROFESSORES, DISCIPLINAS } from '../../../sge.mock';
+import { MATRICULA1, ALUNO, ALUNOS, CURSOS, AULA2, AULA1, PROFESSORES } from '../../../sge.mock';
 import { Aluno } from '../../../shared/aluno.model';
 import { NgOption } from '@ng-select/ng-select';
 import { Curso } from '../../../shared/curso.model';
@@ -10,7 +10,6 @@ import { Aula } from '../../../shared/aula.model';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Professor } from '../../../shared/professor.model';
-import { Disciplina } from '../../../shared/disciplina.model';
 
 @Component({
   selector: 'app-form-turma',
@@ -30,12 +29,10 @@ export class FormTurmaComponent implements OnInit {
   aulasCad: Array<Aula> = [AULA1, AULA2]
   cursos: Array<Curso> = CURSOS
   professores: Array<Professor> = PROFESSORES
-  disciplina: Array<Disciplina> = DISCIPLINAS
 
   alunosOp: NgOption[] = []
   cursoOp: NgOption[] = []
   professoresOp: NgOption[] = []
-  disciplinaOp: NgOption[] = []
 
   
   
@@ -56,9 +53,6 @@ export class FormTurmaComponent implements OnInit {
     })
     this.professores.map(professor => {
       this.professoresOp.push({value: professor, label: professor.nome})
-    })
-    this.disciplina.map(disciplina => {
-      this.disciplinaOp.push({value: disciplina, label: disciplina.nome})
     })
   }
 
@@ -89,10 +83,6 @@ export class FormTurmaComponent implements OnInit {
       this.alunosCad.push(valor['value'])
   }
 
-  adicionaAula(){
-    this.aulasCad.push(this.formAula.value)
-  }
-
   onSubmit(){
     let matriculas: Array<Matricula>
     this.alunosCad.map(aluno => {
@@ -114,6 +104,5 @@ export class FormTurmaComponent implements OnInit {
 
   openVerticallyCentered(content) {
     this.modalService.open(content, { centered: true });
-  }  
-
+  }
 }

@@ -79,7 +79,7 @@ export class FormTurmaComponent implements OnInit {
       id: [aula.id],
       horaInicio: [aula.horaInicio],
       horaFim: [aula.horaFim],
-      professores: [aula.professores],
+      professores: [aula.professores[0]],
       disciplina: [aula.disciplina]
     });
   }
