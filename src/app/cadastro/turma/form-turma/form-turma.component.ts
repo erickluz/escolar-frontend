@@ -2,7 +2,7 @@ import { Component, OnInit, Pipe, PipeTransform, ViewChild } from '@angular/core
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { Turma } from '../../../shared/turma.model';
 import { Matricula } from '../../../shared/matricula.model';
-import { MATRICULA1, ALUNO, ALUNOS, CURSOS, AULA2, AULA1, PROFESSORES, DISCIPLINAS, PROFESSOR } from '../../../sge.mock';
+import { ALUNOS, CURSOS, AULA2, AULA1, PROFESSORES, DISCIPLINAS, PROFESSOR } from '../../../sge.mock';
 import { Aluno } from '../../../shared/aluno.model';
 import { NgOption } from '@ng-select/ng-select';
 import { Curso } from '../../../shared/curso.model';
@@ -32,8 +32,6 @@ export class FormTurmaComponent implements OnInit {
   professores: Array<Professor> = PROFESSORES
   disciplina: Array<Disciplina> = DISCIPLINAS
 
-  listaProfessores: FormArray
-
   alunosOp: NgOption[] = []
   cursoOp: NgOption[] = []
   professoresOp: NgOption[] = []
@@ -45,8 +43,6 @@ export class FormTurmaComponent implements OnInit {
     // Criando formularios reativos
     this.createFormTurma(new Turma(null, null, null, null, null))
     this.createFormAula(new Aula(null, null, null, null, null), new Professor(null, null, null, null, null, null, null, null, null, null, null, null))
-
-    this.listaProfessores = this.formAula.get('professores') as FormArray
 
     // Alimentando combos
     this.alunos.map(aluno => {
@@ -80,39 +76,9 @@ export class FormTurmaComponent implements OnInit {
       id: [aula.id],
       horaInicio: [aula.horaInicio],
       horaFim: [aula.horaFim],
-      professores: this.formBuilder.array([this.criaProfessor()]),
+      professores: [aula.professores],
       disciplina: [aula.disciplina]
     });
-  }
-
-  criaProfessor(){
-    let professor = new Professor(null, null, null, null, null, null, null, null, null, null, null, null)
-    return this.formBuilder.group({
-      id: [professor.id],
-      nome: [professor.nome],
-      sobrenome: [professor.sobrenome],
-      email: [professor.email],
-      senha: [professor.senha],
-      cpf: [professor.cpf],
-      dataNascimento: [professor.dataNascimento],
-      endereco:  [professor.endereco],
-      telefone1:  [professor.telefone1],
-      telefone2:  [professor.telefone2],
-      dataCadastro: [professor.dataCadastro],
-      formacao: [professor.formacao]
-    })
-  }
-
-  adicionaProfessor() {
-    this.listaProfessores.push(this.criaProfessor())
-  }
-
-  removeProfessor(index){
-    this.listaProfessores.removeAt(index)
-  }
-
-  get professorFormGroup() {
-    return this.formAula.get('professores') as FormArray;
   }
 
   adicionaAluno(valor: Event) {

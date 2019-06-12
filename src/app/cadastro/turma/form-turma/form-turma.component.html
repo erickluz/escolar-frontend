@@ -11,16 +11,9 @@
       <div class="form-group row">
         <label class="col-md-3 col-form-label" for="professores">Professores</label>
         <div class="col-md-9">
-          <div formArrayName="professores">
-            <div *ngFor="let professor of professorFormGroup.controls; let i = index;">
-              <div [formGroupName]="i">
-                <ng-select [items]="professoresOp" [selectOnTab]="true" bindValue="value" labelForId="professores"
-                  placeholder="Selecione o professor" formControlName="nome">
-                </ng-select>
-                <!-- <input class="form-control" formControlName="nome" type="text" /> -->
-              </div>
-            </div>
-          </div>
+          <ng-select [items]="professoresOp" [selectOnTab]="true" [multiple]="true" bindValue="value"
+            labelForId="professores" placeholder="Selecione o professor" formControlName="professores">
+          </ng-select>
         </div>
       </div>
 
@@ -51,7 +44,7 @@
 
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="adicionaAula()">Salvar</button>
+    <button type="button" class="btn btn-primary" (click)="adicionaAula();modal.close('Close click')">Salvar</button>
     <button type="button" class="btn btn-danger" (click)="modal.close('Close click')">Cancelar</button>
   </div>
 </ng-template>
@@ -179,6 +172,7 @@
             </div>
           </div>
         </div>
+        {{aulasCad | json}}
       </div>
       <div class="card-footer">
         <button type="submit" class="btn btn btn-primary" routerLink="/cadastro/lista-turmas"><i
