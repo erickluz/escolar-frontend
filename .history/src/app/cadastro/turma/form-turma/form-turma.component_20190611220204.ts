@@ -46,7 +46,7 @@ export class FormTurmaComponent implements OnInit {
     this.createFormTurma(new Turma(null, null, null, null, null))
     this.createFormAula(new Aula(null, null, null, null, null), new Professor(null, null, null, null, null, null, null, null, null, null, null, null))
 
-    this.listaProfessores = this.formAula.get('professores') as FormArray
+    this.listaProfessores = this.formAula.get('professores')
 
     // Alimentando combos
     this.alunos.map(aluno => {
@@ -80,39 +80,22 @@ export class FormTurmaComponent implements OnInit {
       id: [aula.id],
       horaInicio: [aula.horaInicio],
       horaFim: [aula.horaFim],
-      professores: this.formBuilder.array([this.criaProfessor()]),
+      professores: this.formBuilder.array([  this.formBuilder.group({
+        id: [professor.id],
+        nome: [professor.nome],
+        sobrenome: [professor.sobrenome],
+        email: [professor.email],
+        senha: [professor.senha],
+        cpf: [professor.cpf],
+        dataNascimento: [professor.dataNascimento],
+        endereco:  [professor.endereco],
+        telefone1:  [professor.telefone1],
+        telefone2:  [professor.telefone2],
+        dataCadastro: [professor.dataCadastro],
+        formacao: [professor.formacao]
+      })]),
       disciplina: [aula.disciplina]
     });
-  }
-
-  criaProfessor(){
-    let professor = new Professor(null, null, null, null, null, null, null, null, null, null, null, null)
-    return this.formBuilder.group({
-      id: [professor.id],
-      nome: [professor.nome],
-      sobrenome: [professor.sobrenome],
-      email: [professor.email],
-      senha: [professor.senha],
-      cpf: [professor.cpf],
-      dataNascimento: [professor.dataNascimento],
-      endereco:  [professor.endereco],
-      telefone1:  [professor.telefone1],
-      telefone2:  [professor.telefone2],
-      dataCadastro: [professor.dataCadastro],
-      formacao: [professor.formacao]
-    })
-  }
-
-  adicionaProfessor() {
-    this.listaProfessores.push(this.criaProfessor())
-  }
-
-  removeProfessor(index){
-    this.listaProfessores.removeAt(index)
-  }
-
-  get professorFormGroup() {
-    return this.formAula.get('professores') as FormArray;
   }
 
   adicionaAluno(valor: Event) {

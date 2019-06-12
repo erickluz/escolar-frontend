@@ -32,12 +32,13 @@ export class FormTurmaComponent implements OnInit {
   professores: Array<Professor> = PROFESSORES
   disciplina: Array<Disciplina> = DISCIPLINAS
 
-  listaProfessores: FormArray
-
   alunosOp: NgOption[] = []
   cursoOp: NgOption[] = []
   professoresOp: NgOption[] = []
   disciplinaOp: NgOption[] = []
+
+
+
 
   constructor(private formBuilder: FormBuilder, private modalService: NgbModal) { }
 
@@ -45,8 +46,6 @@ export class FormTurmaComponent implements OnInit {
     // Criando formularios reativos
     this.createFormTurma(new Turma(null, null, null, null, null))
     this.createFormAula(new Aula(null, null, null, null, null), new Professor(null, null, null, null, null, null, null, null, null, null, null, null))
-
-    this.listaProfessores = this.formAula.get('professores') as FormArray
 
     // Alimentando combos
     this.alunos.map(aluno => {
@@ -80,71 +79,54 @@ export class FormTurmaComponent implements OnInit {
       id: [aula.id],
       horaInicio: [aula.horaInicio],
       horaFim: [aula.horaFim],
-      professores: this.formBuilder.array([this.criaProfessor()]),
-      disciplina: [aula.disciplina]
-    });
-  }
+      professores: this.formBuilder.array([this.formBuilder.group({
+        id: [professor.id],
+        nome: [professor.nome],
+        sobrenome: [professor.sobrenome],
+        email: [professor.email],
+        senha: [professor.senha],
+        cpf: [professor.cpf],
+        dataNascimento: [professor.dataNascimento],
+        endereco:  [professor.endereco],
+        telefone1:  [professor.telefone1],
+        telefone2:  [professor.telefone2],
+        dataCadastro: [professor.dataCadastro],
+        formacao: [professor.formacao]
+      })]),
+    disciplina: [aula.disciplina]
+  });
+}
 
-  criaProfessor(){
-    let professor = new Professor(null, null, null, null, null, null, null, null, null, null, null, null)
-    return this.formBuilder.group({
-      id: [professor.id],
-      nome: [professor.nome],
-      sobrenome: [professor.sobrenome],
-      email: [professor.email],
-      senha: [professor.senha],
-      cpf: [professor.cpf],
-      dataNascimento: [professor.dataNascimento],
-      endereco:  [professor.endereco],
-      telefone1:  [professor.telefone1],
-      telefone2:  [professor.telefone2],
-      dataCadastro: [professor.dataCadastro],
-      formacao: [professor.formacao]
-    })
-  }
+adicionaAluno(valor: Event){
+  if (valor != undefined)
+    this.alunosCad.push(valor['value'])
+}
 
-  adicionaProfessor() {
-    this.listaProfessores.push(this.criaProfessor())
-  }
+adicionaAula(){
+  this.aulasCad.push(this.formAula.value)
+}
 
-  removeProfessor(index){
-    this.listaProfessores.removeAt(index)
-  }
+onSubmit(){
+  let matriculas: Array<Matricula>
+  this.alunosCad.map(aluno => {
+    matriculas.push(aluno.matriculas[0])
+  })
+  this.formTurma.controls['matriculas'].setValue(matriculas)
+  console.log(this.formTurma.value)
+}
 
-  get professorFormGroup() {
-    return this.formAula.get('professores') as FormArray;
-  }
+removeAluno(valor: Event){
+  let index = parseInt((<HTMLInputElement>valor.target).id)
+  this.alunosCad.splice(index, 1)
+}
 
-  adicionaAluno(valor: Event) {
-    if (valor != undefined)
-      this.alunosCad.push(valor['value'])
-  }
+removeAulas(valor: Event){
+  let index = parseInt((<HTMLInputElement>valor.target).id)
+  this.aulasCad.splice(index, 1)
+}
 
-  adicionaAula() {
-    this.aulasCad.push(this.formAula.value)
-  }
-
-  onSubmit() {
-    let matriculas: Array<Matricula>
-    this.alunosCad.map(aluno => {
-      matriculas.push(aluno.matriculas[0])
-    })
-    this.formTurma.controls['matriculas'].setValue(matriculas)
-    console.log(this.formTurma.value)
-  }
-
-  removeAluno(valor: Event) {
-    let index = parseInt((<HTMLInputElement>valor.target).id)
-    this.alunosCad.splice(index, 1)
-  }
-
-  removeAulas(valor: Event) {
-    let index = parseInt((<HTMLInputElement>valor.target).id)
-    this.aulasCad.splice(index, 1)
-  }
-
-  openVerticallyCentered(content) {
-    this.modalService.open(content, { centered: true });
-  }
+openVerticallyCentered(content) {
+  this.modalService.open(content, { centered: true });
+}  
 
 }

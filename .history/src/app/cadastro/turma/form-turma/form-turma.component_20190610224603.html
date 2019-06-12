@@ -8,21 +8,18 @@
   <div class="modal-body">
 
     <form [formGroup]="formAula">
+
+
       <div class="form-group row">
-        <label class="col-md-3 col-form-label" for="professores">Professores</label>
+        <label class="col-md-3 col-form-label" for="professor">Professor</label>
         <div class="col-md-9">
-          <div formArrayName="professores">
-            <div *ngFor="let professor of professorFormGroup.controls; let i = index;">
-              <div [formGroupName]="i">
-                <ng-select [items]="professoresOp" [selectOnTab]="true" bindValue="value" labelForId="professores"
-                  placeholder="Selecione o professor" formControlName="nome">
-                </ng-select>
-                <!-- <input class="form-control" formControlName="nome" type="text" /> -->
-              </div>
-            </div>
-          </div>
+          <ng-select [items]="professoresOp" [selectOnTab]="true" bindValue="value" labelForId="professor"
+            placeholder="Selecione o professor" formControlName="professores">
+          </ng-select>
         </div>
       </div>
+
+
 
       <div class="form-group row">
         <label class="col-md-3 col-form-label" for="disciplina">Disciplina</label>
@@ -189,7 +186,5 @@
       </div>
     </div>
     {{formTurma.value | json}}
-
-    Form Status: {{ formTurma.status }}
   </div>
 </form>

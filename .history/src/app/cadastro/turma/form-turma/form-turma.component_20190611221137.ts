@@ -112,7 +112,7 @@ export class FormTurmaComponent implements OnInit {
   }
 
   get professorFormGroup() {
-    return this.formAula.get('professores') as FormArray;
+    return this.formAula.get('contacts') as FormArray;
   }
 
   adicionaAluno(valor: Event) {

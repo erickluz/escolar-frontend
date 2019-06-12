@@ -11,6 +11,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Professor } from '../../../shared/professor.model';
 import { Disciplina } from '../../../shared/disciplina.model';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-turma',
@@ -32,7 +33,7 @@ export class FormTurmaComponent implements OnInit {
   professores: Array<Professor> = PROFESSORES
   disciplina: Array<Disciplina> = DISCIPLINAS
 
-  listaProfessores: FormArray
+  professoresAula: Array<Professor> = []
 
   alunosOp: NgOption[] = []
   cursoOp: NgOption[] = []
@@ -42,11 +43,10 @@ export class FormTurmaComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private modalService: NgbModal) { }
 
   ngOnInit() {
+    this.professoresAula = [new Professor(null, null, null, null, null, null, null, null, null, null, null, null)]
     // Criando formularios reativos
     this.createFormTurma(new Turma(null, null, null, null, null))
     this.createFormAula(new Aula(null, null, null, null, null), new Professor(null, null, null, null, null, null, null, null, null, null, null, null))
-
-    this.listaProfessores = this.formAula.get('professores') as FormArray
 
     // Alimentando combos
     this.alunos.map(aluno => {
@@ -66,7 +66,7 @@ export class FormTurmaComponent implements OnInit {
   createFormTurma(turma: Turma) {
     this.formTurma = this.formBuilder.group({
       id: [turma.id],
-      nome: [turma.nome],
+      nome: [turma.nome, Validators.required],
       dataInicio: [turma.dataInicio],
       local: [turma.local],
       curso: [turma.curso],
@@ -80,40 +80,25 @@ export class FormTurmaComponent implements OnInit {
       id: [aula.id],
       horaInicio: [aula.horaInicio],
       horaFim: [aula.horaFim],
-      professores: this.formBuilder.array([this.criaProfessor()]),
+      professores: this.formBuilder.array([]),
       disciplina: [aula.disciplina]
     });
   }
 
-  criaProfessor(){
-    let professor = new Professor(null, null, null, null, null, null, null, null, null, null, null, null)
-    return this.formBuilder.group({
-      id: [professor.id],
-      nome: [professor.nome],
-      sobrenome: [professor.sobrenome],
-      email: [professor.email],
-      senha: [professor.senha],
-      cpf: [professor.cpf],
-      dataNascimento: [professor.dataNascimento],
-      endereco:  [professor.endereco],
-      telefone1:  [professor.telefone1],
-      telefone2:  [professor.telefone2],
-      dataCadastro: [professor.dataCadastro],
-      formacao: [professor.formacao]
-    })
-  }
-
-  adicionaProfessor() {
-    this.listaProfessores.push(this.criaProfessor())
-  }
-
-  removeProfessor(index){
-    this.listaProfessores.removeAt(index)
-  }
-
-  get professorFormGroup() {
-    return this.formAula.get('professores') as FormArray;
-  }
+  // this.formBuilder.group({
+  //   id: [professor.id],
+  //   nome: [professor.nome],
+  //   sobrenome: [professor.sobrenome],
+  //   email: [professor.email],
+  //   senha: [professor.senha],
+  //   cpf: [professor.cpf],
+  //   dataNascimento: [professor.dataNascimento],
+  //   endereco:  [professor.endereco],
+  //   telefone1:  [professor.telefone1],
+  //   telefone2:  [professor.telefone2],
+  //   dataCadastro: [professor.dataCadastro],
+  //   formacao: [professor.formacao]
+  // })
 
   adicionaAluno(valor: Event) {
     if (valor != undefined)

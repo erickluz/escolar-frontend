@@ -111,9 +111,7 @@ export class FormTurmaComponent implements OnInit {
     this.listaProfessores.removeAt(index)
   }
 
-  get professorFormGroup() {
-    return this.formAula.get('professores') as FormArray;
-  }
+  
 
   adicionaAluno(valor: Event) {
     if (valor != undefined)

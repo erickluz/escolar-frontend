@@ -8,21 +8,16 @@
   <div class="modal-body">
 
     <form [formGroup]="formAula">
-      <div class="form-group row">
-        <label class="col-md-3 col-form-label" for="professores">Professores</label>
-        <div class="col-md-9">
-          <div formArrayName="professores">
-            <div *ngFor="let professor of professorFormGroup.controls; let i = index;">
-              <div [formGroupName]="i">
-                <ng-select [items]="professoresOp" [selectOnTab]="true" bindValue="value" labelForId="professores"
-                  placeholder="Selecione o professor" formControlName="nome">
-                </ng-select>
-                <!-- <input class="form-control" formControlName="nome" type="text" /> -->
-              </div>
-            </div>
-          </div>
-        </div>
+
+      <div formArrayName="professores" *ngFor="let arrayProfessor of arrayItems; let i=index">
+
+        <input [id]="arrayProfessor.id" type="checkbox" [formControl]="demoArray[i]">
+        <label [for]="arrayProfessor.id" class="array-item-title">
+          {{arrayItem.title}}</label>
+
       </div>
+
+
 
       <div class="form-group row">
         <label class="col-md-3 col-form-label" for="disciplina">Disciplina</label>
@@ -76,7 +71,7 @@
           <label class="col-md-3 col-form-label" for="nome">Nome</label>
           <div class="col-md-9">
             <input type="text" id="nome" name="nome" class="form-control" placeholder="Insira o nome da turma"
-              formControlName="nome">
+              formControlName="nome" required>
           </div>
         </div>
         <div class="form-group row">
