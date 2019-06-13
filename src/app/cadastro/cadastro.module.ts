@@ -17,6 +17,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ListMatriculaComponent } from './aluno/matricula/list-matricula/list-matricula.component';
 import { FormMatriculaComponent } from './aluno/matricula/form-matricula/form-matricula.component';
+import { HttpModule } from '@angular/http';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { FormMatriculaComponent } from './aluno/matricula/form-matricula/form-ma
     CadastroRoutingModule,
     ReactiveFormsModule,
     NgSelectModule,
+    HttpModule,
     NgbModule
   ]
 })

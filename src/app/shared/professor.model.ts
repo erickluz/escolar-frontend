@@ -1,7 +1,5 @@
 import { Pessoa } from './pessoa.model';
 
-
-
 export class Professor extends Pessoa{
 
     id: number

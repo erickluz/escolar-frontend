@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { EscolarService } from '../../../escolar.service';
+import { EscolarService } from '../../escolar.service';
 import { Aluno } from '../../../shared/aluno.model';
 
 @Component({
