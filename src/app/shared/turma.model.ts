@@ -1,6 +1,6 @@
 import { Curso } from './curso.model';
 import { Aula } from './aula.model';
-import { Matricula } from './Matricula.model';
+import { Matricula } from './matricula.model';
 
 export class Turma{
     id: number
