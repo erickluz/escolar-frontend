@@ -39,8 +39,8 @@ export class FormAlunoComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(JSON.stringify(this.formAluno.value))
+    
+    // console.log(JSON.stringify(this.formAluno.value))
   }
-
   
 }

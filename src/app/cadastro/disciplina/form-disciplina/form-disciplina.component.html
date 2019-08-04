@@ -1,4 +1,4 @@
-<form [formGroup]="formDisciplina" onSubmit="onSubtmit()">
+<form [formGroup]="formDisciplina" (ngSubmit)="onSubmit()">
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
@@ -26,15 +26,13 @@
               placeholder="Descricao da disciplina" formControlName="descricao">
           </div>
         </div>
-
-
       </div>
       <div class="card-footer">
-        <button type="submit" class="btn btn btn-primary" routerLink="/cadastro/lista-professores"><i
+        <button type="submit" class="btn btn btn-primary"><i
             class="fa fa-check"></i>
           Salvar</button>
         <!-- <i class="fa fa-dot-circle-o"></i>"  -->
-        <button type="reset" class="btn btn btn-danger" routerLink="/cadastro/lista-professores"><i
+        <button type="reset" class="btn btn btn-danger" routerLink="/cadastro/lista-disciplinas"><i
             class="fa fa-ban"></i>
           Cancelar</button>
       </div>

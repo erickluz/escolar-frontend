@@ -53,6 +53,13 @@ const routes: Routes = [
         }
       },
       {
+        path: 'form-professor/:id',
+        component: FormProfessorComponent,
+        data: {
+          title: 'Fomulario de professor'
+        }
+      },
+      {
         path: 'lista-disciplinas',
         component: ListDisciplinaComponent,
         data: {
@@ -61,6 +68,13 @@ const routes: Routes = [
       },
       {
         path: 'form-disciplina',
+        component: FormDisciplinaComponent,
+        data: {
+          title: 'Fomulario de disciplina'
+        }
+      },
+      {
+        path: 'form-disciplina/:id',
         component: FormDisciplinaComponent,
         data: {
           title: 'Fomulario de disciplina'

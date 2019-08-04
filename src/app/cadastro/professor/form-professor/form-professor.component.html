@@ -1,4 +1,4 @@
-<form [formGroup]="formProfessor" onSubmit="onSubtmit()">
+<form [formGroup]="formProfessor" (ngSubmit)="onSubmit()">
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
@@ -83,7 +83,9 @@
         </div>
       </div>
       <div class="card-footer">
-        <button type="submit" class="btn btn btn-primary" routerLink="/cadastro/lista-professores"><i
+        <!-- <button type="submit" class="btn btn btn-primary" routerLink="/cadastro/lista-professores"><i
+            class="fa fa-check"></i> -->
+          <button type="submit" class="btn btn btn-primary"><i
             class="fa fa-check"></i>
           Salvar</button>
         <!-- <i class="fa fa-dot-circle-o"></i>"  -->

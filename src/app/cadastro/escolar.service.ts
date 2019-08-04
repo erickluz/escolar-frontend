@@ -8,27 +8,29 @@ export class EscolarService{
     
     constructor(private http: Http){}
 
-    public getProfessores(): Promise<Array<Professor>> {
-        return this.http.get(this.url_api + 'professor').toPromise()
+    public getListaObjetos(obj: String): Promise<Array<any>> {
+        return this.http.get(this.url_api + obj).toPromise()
         .then(resposta => {
             return resposta.json()
         })
-        .catch(resposta => {
-            console.log("Erro ao buscar lista de professores")
-        })
     }
 
-    public deletaProfessor(id: number): Promise<any> {
-        let req = this.url_api + 'professor/' + id
-        console.log("Link:  " + req)
-        return this.http.delete(req)
-        .toPromise()
+    public getObjetoPorId(id: number, nome: String):Promise<any>{
+        return this.http.get(this.url_api + nome + '/' + id).toPromise()
         .then(resposta => {
             return resposta.json()
         })
-        .catch(resposta => {
-            console.log("Erro ao deletar professor" + JSON.stringify(resposta))
-        })
     }
 
+    public deletaObjeto(id: number, nome: String): Promise<any> {
+        return this.http.delete(this.url_api + nome + '/' + id).toPromise()
+    }
+
+    public cadastrarObjeto(obj: any, nome: String): Promise<any>{
+        return this.http.post(this.url_api + nome, obj).toPromise()
+    }
+    
+    public editarObjeto(obj: any, nome: String): Promise<any>{
+        return this.http.put(this.url_api + nome + '/' + obj.id, obj).toPromise()
+    }
 }
