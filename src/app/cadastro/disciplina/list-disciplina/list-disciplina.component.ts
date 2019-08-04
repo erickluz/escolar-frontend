@@ -1,10 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DISCIPLINAS } from '../../../sge.mock';
 import { Disciplina } from '../../../shared/disciplina.model';
 import { EscolarService } from '../../escolar.service';
 import { ToastrService } from 'ngx-toastr';
 import {ModalDirective} from 'ngx-bootstrap/modal';
-
 
 @Component({
   selector: 'app-list-disciplina',
@@ -25,9 +23,7 @@ export class ListDisciplinaComponent implements OnInit {
   }
 
   deletarDisciplina(valor: Event) {
-    
-    // let id: number = parseInt((<HTMLInputElement>valor.target).id)
-    
+
     let id: number = this.disciplinas[this.id].id
     this.service.deletaObjeto(id, 'disciplina')
     .then(resposta => {
@@ -45,6 +41,9 @@ export class ListDisciplinaComponent implements OnInit {
     this.service.getListaObjetos('disciplina')
     .then(resposta => {
       this.disciplinas = resposta
+    })
+    .catch(response => {
+      console.log("Erro ao consultar disciplinas. Erro: " + JSON.stringify(response))
     })
   }
 

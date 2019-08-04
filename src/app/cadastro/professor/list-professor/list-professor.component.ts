@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Professor } from '../../../shared/professor.model';
-import { PROFESSORES } from '../../../sge.mock';
 import { EscolarService } from '../../escolar.service';
 import { ToastrService } from 'ngx-toastr';
-
+import {ModalDirective} from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-list-professor',
   templateUrl: './list-professor.component.html',
@@ -11,8 +10,10 @@ import { ToastrService } from 'ngx-toastr';
   providers: [EscolarService]
 })
 export class ListProfessorComponent implements OnInit {
+  @ViewChild('dangerModal') public dangerModal: ModalDirective;
 
-  professores: Array<Professor> = []
+  private professores: Array<Professor> = []
+  private id: number
 
   constructor(private servico: EscolarService,private toastr: ToastrService) { }
 
@@ -21,8 +22,8 @@ export class ListProfessorComponent implements OnInit {
   }
 
   deletarProfessor(valor: Event) {
-    let id: number = parseInt((<HTMLInputElement>valor.target).id)
-    this.servico.deletaObjeto(this.professores[id].id, 'professor')
+  
+    this.servico.deletaObjeto(this.professores[this.id].id, 'professor')
       .then(resposta => {
         console.log("Sucesso ao deletar professor: " + resposta.json())
         this.getListaProfessores()
