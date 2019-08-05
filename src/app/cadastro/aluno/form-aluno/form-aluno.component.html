@@ -1,4 +1,4 @@
-<form [formGroup]="formAluno" onSubmit="onSubtmit()">
+<form [formGroup]="formAluno" (ngSubmit)="onSubmit()">
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
@@ -13,9 +13,9 @@
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-md-3 col-form-label" for="nome">RA</label>
+          <label class="col-md-3 col-form-label" for="ra">RA</label>
           <div class="col-md-9">
-            <input type="text" id="ra" name="ra" class="form-control" formControlName="RA" disabled>
+            <input type="text" id="ra" name="ra" class="form-control" formControlName="ra" [disabled]="false">
           </div>
         </div>
         <div class="form-group row">
@@ -83,7 +83,7 @@
 
       </div>
       <div class="card-footer">
-        <button type="submit" class="btn btn btn-primary" routerLink="/cadastro/lista-alunos"><i
+        <button type="submit" class="btn btn btn-primary"><i
             class="fa fa-check"></i>
           Salvar</button>
         <!-- <i class="fa fa-dot-circle-o"></i>"  -->
@@ -91,6 +91,6 @@
           Cancelar</button>
       </div>
     </div>
-    {{formAluno.value | json}}
+    <!-- {{formAluno.value | json}} -->
   </div>
 </form>

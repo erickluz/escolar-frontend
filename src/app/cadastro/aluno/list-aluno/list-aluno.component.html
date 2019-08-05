@@ -5,8 +5,8 @@
         <strong>Alunos Cadastrados</strong>
       </div>
       <div class="card-body">
-          <button class="btn btn btn-primary" routerLink="/cadastro/form-aluno"><i class="icon-user"></i> Novo +</button>
-          <hr>
+        <button class="btn btn btn-primary" routerLink="/cadastro/form-aluno"><i class="icon-user"></i> Novo +</button>
+        <hr>
         <table class="table table-responsive-sm table-hover table-outline">
           <thead>
             <tr>
@@ -19,21 +19,22 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let aluno of alunos;">
+            <tr *ngFor="let aluno of alunos;let i=index">
               <td>{{aluno.id}}</td>
               <td>{{aluno.nome}}</td>
               <td>{{aluno.RA}}</td>
               <td>{{aluno.email}}</td>
               <td>{{aluno.dataCadastro}}</td>
               <td>
-                <button type="button" class="btn btn-sm btn-ghost-info"><i
+                <button type="button" class="btn btn-sm btn-ghost-info" routerLink="/cadastro/form-aluno/{{aluno.id}}"><i
                     class="icon-pencil icons d-block"></i>Editar</button>
                 <button type="button" class="btn btn-sm btn-ghost-warning"><i
                     class="icon-magnifier icons d-block"></i>Detalhes</button>
-                <button type="button" class="btn btn-sm btn-ghost-danger"><i
-                    class="icon-ban icons d-block"></i>Desativar</button>
-                <button type="button" class="btn btn-sm btn-ghost-warning" routerLink="/cadastro/lista-matricula/{{aluno.id}}"><i
-                      class="icon-graduation icons d-block"></i>Matricula</button>                                        
+                <button id="{{i}}" type="button" class="btn btn-sm btn-ghost-danger"
+                  (click)="dangerModal.show(); id=i"><i class="icon-ban icons d-block"></i>Desativar</button>
+                <button type="button" class="btn btn-sm btn-ghost-warning"
+                  routerLink="/cadastro/lista-matricula/{{aluno.id}}"><i
+                    class="icon-graduation icons d-block"></i>Matricula</button>
               </td>
             </tr>
           </tbody>
@@ -53,3 +54,24 @@
       </div>
     </div>
   </div>
+
+  <div bsModal #dangerModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-danger modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Excluir</h4>
+          <button type="button" class="close" (click)="dangerModal.hide()" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Deseja realmente excluir o item?&hellip;</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="dangerModal.hide()">Fechar</button>
+          <button type="button" class="btn btn-danger" (click)="deletarAlunos()">Excluir</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->

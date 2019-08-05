@@ -13,7 +13,7 @@ export class Aluno extends Pessoa{
     telefone1: string
     telefone2: string
     dataCadastro: string
-    RA: string
+    ra: string
     matriculas: Array<Matricula>
 
     constructor(
@@ -28,11 +28,11 @@ export class Aluno extends Pessoa{
         telefone1: string,
         telefone2: string,
         dataCadastro: string,
-        RA: string,
+        ra: string,
         matriculas: Array<Matricula>
     ){
         super(id, nome, sobrenome, email, senha, cpf, dataNascimento, endereco, telefone1, telefone2, dataCadastro)
-        this.RA = RA      
+        this.ra = ra      
         this.matriculas = matriculas
     }
 }

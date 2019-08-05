@@ -32,6 +32,13 @@ const routes: Routes = [
         }
       },
       {
+        path: 'form-aluno/:id',
+        component: FormAlunoComponent,
+        data: {
+          title: 'Fomulario de aluno'
+        }
+      },
+      {
         path: 'form-aluno',
         component: FormAlunoComponent,
         data: {
