@@ -29,15 +29,14 @@
         <div class="form-group row">
           <div class="col-md-12">
             Curso
-            <ng-select #agesSelect [items]="cursoOp" [selectOnTab]="true" bindValue="value"
+            <ng-select [items]="cursoOp" [selectOnTab]="true" bindValue="value"
               labelForId="curso" placeholder="Selecione o curso" formControlName="curso">
-
             </ng-select>
           </div>
         </div>
       </div>
       <div class="card-footer">
-        <button type="submit" class="btn btn btn-primary" routerLink="/cadastro/lista-matricula/{{formMatricula.value.id}}"><i
+        <button type="submit" class="btn btn btn-primary"><i
             class="fa fa-check"></i>
           Matricular</button>
         <!-- <i class="fa fa-dot-circle-o"></i>"  -->
