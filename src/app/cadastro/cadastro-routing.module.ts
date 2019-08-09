@@ -102,10 +102,24 @@ const routes: Routes = [
         }
       },
       {
+        path: 'form-curso/:id',
+        component: FormCursoComponent,
+        data: {
+          title: 'Fomulario de Curso'
+        }
+      },
+      {
         path: 'form-curso',
         component: FormCursoComponent,
         data: {
           title: 'Fomulario de Curso'
+        }
+      },
+      {
+        path: 'form-turma/:id',
+        component: FormTurmaComponent,
+        data: {
+          title: 'Fomulario de turma'
         }
       },
       {

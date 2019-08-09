@@ -25,7 +25,7 @@ export class FormCursoComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private service: EscolarService, private toast: ToastrService, private route: ActivatedRoute, private nav: Router) {}
 
   ngOnInit() {
-    this.listDisciplinas()
+    this.listaDisciplinas()
     let idCurso: number = this.route.snapshot.params['id']
     this.createForm(new Curso(null, null, null, null))
     if (idCurso != null) {
@@ -33,14 +33,14 @@ export class FormCursoComponent implements OnInit {
         .then(curso => {
           this.curso = curso
           this.createForm(this.curso)
-          this.listDisciplinas()
+          this.listaDisciplinas()
         })
         .catch(() => {
           this.toast.error("Erro ao consultar curso")
-          this.nav.navigate(['/cadastro/list-cursos/'])
+          this.nav.navigate(['/cadastro/lista-cursos/'])
         })
     } else {
-      this.listDisciplinas()
+      this.listaDisciplinas()
     }
 
   }
@@ -59,26 +59,26 @@ export class FormCursoComponent implements OnInit {
       this.service.cadastrarObjeto(this.formCurso.value, 'curso')
         .then(() => {
           this.toast.success("Sucesso ao cadastrar curso")
-          this.nav.navigate(['/cadastro/list-cursos'])
+          this.nav.navigate(['/cadastro/lista-cursos'])
         })
         .catch(resposta => {
           this.toast.error(resposta.json().msg, "Erro")
-          this.nav.navigate(['/cadastro/list-cursos'])
+          this.nav.navigate(['/cadastro/lista-cursos'])
         })
     } else {
       this.service.editarObjeto(this.formCurso.value, 'curso')
         .then(() => {
           this.toast.success("Sucesso ao editar curso")
-          this.nav.navigate(['/cadastrar/list-cursos'])
+          this.nav.navigate(['/cadastrar/lista-cursos'])
         })
         .catch(resposta => {
           this.toast.error(resposta.json().msg, "Erro ao editar objeto")
-          this.nav.navigate(['/cadastrar/list-cursos'])
+          this.nav.navigate(['/cadastrar/lista-cursos'])
         })
     }
   }
 
-  listDisciplinas() {
+  listaDisciplinas() {
     this.service.getListaObjetos('disciplina')
       .then(disciplinas => {
         this.disciplinas = disciplinas

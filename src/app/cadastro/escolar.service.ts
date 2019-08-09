@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http'
 import { Professor } from '../shared/professor.model';
+import { ThemeRoutingModule } from '../views/theme/theme-routing.module';
 
 @Injectable()
 export class EscolarService{
@@ -33,4 +34,5 @@ export class EscolarService{
     public editarObjeto(obj: any, nome: String): Promise<any>{
         return this.http.put(this.url_api + nome + '/' + obj.id, obj).toPromise()
     }
+
 }
