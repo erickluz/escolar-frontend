@@ -83,7 +83,7 @@
           <label class="col-md-3 col-form-label" for="dataInicio">Data Inicio</label>
           <div class="col-md-9">
             <input type="date" id="dataInicio" name="dataInicio" class="form-control"
-              placeholder="Descricao da do curso" formControlName="dataInicio">
+              placeholder="Descricao do curso" formControlName="dataInicio">
           </div>
         </div>
         <div class="form-group row">
@@ -103,7 +103,7 @@
               <div class="card-body">
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <ng-select #agesSelect (change)="adicionaAluno($event)" [items]="alunosOp" [selectOnTab]="true"
+                    <ng-select (change)="adicionaAluno($event)" [items]="alunosOp" [selectOnTab]="true"
                       bindValue="value" labelForId="alunos" placeholder="Procure por alunos">
                     </ng-select>
                   </div>
@@ -172,10 +172,9 @@
             </div>
           </div>
         </div>
-        {{aulasCad | json}}
       </div>
       <div class="card-footer">
-        <button type="submit" class="btn btn btn-primary" routerLink="/cadastro/lista-turmas"><i
+        <button type="submit" class="btn btn btn-primary"><i
             class="fa fa-check"></i>
           Salvar</button>
         <button type="reset" class="btn btn btn-danger" routerLink="/cadastro/lista-turmas"><i class="fa fa-ban"></i>

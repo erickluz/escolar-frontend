@@ -2,29 +2,47 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Curso } from '../../../shared/curso.model';
 import { Disciplina } from '../../../shared/disciplina.model';
-import { DISCIPLINAS } from '../../../sge.mock';
 import { NgOption } from '@ng-select/ng-select';
+import { EscolarService } from '../../escolar.service';
+import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DISCIPLINAS } from '../../../sge.mock';
 
 @Component({
   selector: 'app-form-curso',
   templateUrl: './form-curso.component.html',
-  styleUrls: ['./form-curso.component.scss']
+  styleUrls: ['./form-curso.component.scss'],
+  providers: [EscolarService]
 })
 export class FormCursoComponent implements OnInit {
 
-  formCurso: FormGroup
-  disciplinas: Array<Disciplina> = DISCIPLINAS
-  disciplina: NgOption[] = []
+  private formCurso: FormGroup
+  private disciplinas: Array<Disciplina> = DISCIPLINAS
+  private disciplinaOp: NgOption[] = []
+  private curso: Curso
+  private edicao: boolean = false
 
-
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private service: EscolarService, private toast: ToastrService, private route: ActivatedRoute, private nav: Router) {}
 
   ngOnInit() {
+    this.listDisciplinas()
+    let idCurso: number = this.route.snapshot.params['id']
     this.createForm(new Curso(null, null, null, null))
-    
-    for(let i=0;i<this.disciplinas.length;i++)
-      this.disciplina.push({value: this.disciplinas[i], label: this.disciplinas[i].nome.toString()})
-    
+    if (idCurso != null) {
+      this.service.getObjetoPorId(idCurso, 'curso')
+        .then(curso => {
+          this.curso = curso
+          this.createForm(this.curso)
+          this.listDisciplinas()
+        })
+        .catch(() => {
+          this.toast.error("Erro ao consultar curso")
+          this.nav.navigate(['/cadastro/list-cursos/'])
+        })
+    } else {
+      this.listDisciplinas()
+    }
+
   }
 
   createForm(curso: Curso) {
@@ -36,9 +54,41 @@ export class FormCursoComponent implements OnInit {
     })
   }
 
-  onSubmit() {    
-    console.log(this.formCurso.value)
+  onSubmit() {
+    if (!this.edicao) {
+      this.service.cadastrarObjeto(this.formCurso.value, 'curso')
+        .then(() => {
+          this.toast.success("Sucesso ao cadastrar curso")
+          this.nav.navigate(['/cadastro/list-cursos'])
+        })
+        .catch(resposta => {
+          this.toast.error(resposta.json().msg, "Erro")
+          this.nav.navigate(['/cadastro/list-cursos'])
+        })
+    } else {
+      this.service.editarObjeto(this.formCurso.value, 'curso')
+        .then(() => {
+          this.toast.success("Sucesso ao editar curso")
+          this.nav.navigate(['/cadastrar/list-cursos'])
+        })
+        .catch(resposta => {
+          this.toast.error(resposta.json().msg, "Erro ao editar objeto")
+          this.nav.navigate(['/cadastrar/list-cursos'])
+        })
+    }
   }
 
+  listDisciplinas() {
+    this.service.getListaObjetos('disciplina')
+      .then(disciplinas => {
+        this.disciplinas = disciplinas
+        this.disciplinas.map(disciplina => {
+          this.disciplinaOp = [...this.disciplinaOp, { value: disciplina, label: disciplina.nome.toString() }]
+        })
+      })
+      .catch(erro => {
+        this.toast.error(erro.json().msg, "Erro")
+      })
+  }
 
 }

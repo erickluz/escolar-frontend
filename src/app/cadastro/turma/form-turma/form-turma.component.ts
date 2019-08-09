@@ -2,7 +2,6 @@ import { Component, OnInit, Pipe, PipeTransform, ViewChild } from '@angular/core
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { Turma } from '../../../shared/turma.model';
 import { Matricula } from '../../../shared/matricula.model';
-import { ALUNOS, CURSOS, AULA2, AULA1, PROFESSORES, DISCIPLINAS, PROFESSOR } from '../../../sge.mock';
 import { Aluno } from '../../../shared/aluno.model';
 import { NgOption } from '@ng-select/ng-select';
 import { Curso } from '../../../shared/curso.model';
@@ -11,52 +10,107 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Professor } from '../../../shared/professor.model';
 import { Disciplina } from '../../../shared/disciplina.model';
+import { EscolarService } from '../../escolar.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-turma',
   templateUrl: './form-turma.component.html',
-  styleUrls: ['./form-turma.component.scss']
+  styleUrls: ['./form-turma.component.scss'],
+  providers: [EscolarService]
 })
 export class FormTurmaComponent implements OnInit {
   @ViewChild('myModal') public myModal: ModalDirective;
   @ViewChild('largeModal') public largeModal: ModalDirective;
 
-  formTurma: FormGroup
-  formAula: FormGroup
-
+  private formTurma: FormGroup
+  private formAula: FormGroup
   // MOCK
-  alunos: Array<Aluno> = ALUNOS
-  alunosCad: Array<Aluno> = ALUNOS
-  aulasCad: Array<Aula> = [AULA1, AULA2]
-  cursos: Array<Curso> = CURSOS
-  professores: Array<Professor> = PROFESSORES
-  disciplina: Array<Disciplina> = DISCIPLINAS
+  private alunos: Array<Aluno>
+  private alunosCad: Array<Aluno> = []
+  private aulasCad: Array<Aula> = []
+  private cursos: Array<Curso>
+  private professores: Array<Professor>
+  private disciplinas: Array<Disciplina>
+  private alunosOp: NgOption[] = []
+  private cursoOp: NgOption[] = []
+  private professoresOp: NgOption[] = []
+  private disciplinaOp: NgOption[] = []
 
-  alunosOp: NgOption[] = []
-  cursoOp: NgOption[] = []
-  professoresOp: NgOption[] = []
-  disciplinaOp: NgOption[] = []
-
-  constructor(private formBuilder: FormBuilder, private modalService: NgbModal) { }
+  constructor(
+    private formBuilder: FormBuilder, 
+    private modalService: NgbModal, 
+    private service: EscolarService, 
+    private toast: ToastrService,
+    private nav: Router) { }
 
   ngOnInit() {
     // Criando formularios reativos
-    this.createFormTurma(new Turma(null, null, null, null, null))
+    this.createFormTurma(new Turma(null, null, null, null, [new Matricula(null, null, null, null, null)]))
     this.createFormAula(new Aula(null, null, null, null, null), new Professor(null, null, null, null, null, null, null, null, null, null, null, null))
 
-    // Alimentando combos
-    this.alunos.map(aluno => {
-      this.alunosOp.push({ value: aluno, label: aluno.id + " " + aluno.nome + " " + aluno.sobrenome })
+    this.carregaAlunos()
+    this.carregaCursos()
+    this.carregaProfessores()
+    this.carregaDisciplinas()
+
+  }
+
+  carregaProfessores(){
+    this.service.getListaObjetos('professor')
+    .then(resposta => {
+      this.professores = resposta
+      this.professores.map(professor => {
+        this.professoresOp = [...this.professoresOp, { value: professor, label: professor.nome}]
+      })
     })
-    this.cursos.map(curso => {
-      this.cursoOp.push({ value: curso, label: curso.nome })
+    .catch(() => {
+      this.toast.error("Erro ao carregar professores")
+      this.nav.navigate(['/cadastro/lista-turmas'])
     })
-    this.professores.map(professor => {
-      this.professoresOp.push({ value: professor, label: professor.nome })
+  }
+
+  carregaDisciplinas(){
+    this.service.getListaObjetos('disciplina')
+    .then(resposta => {
+      this.disciplinas = resposta
+      this.disciplinas.map( disciplina => {
+        this.disciplinaOp = [...this.disciplinaOp, {value: disciplina, label: disciplina.nome}]
+      })
     })
-    this.disciplina.map(disciplina => {
-      this.disciplinaOp.push({ value: disciplina, label: disciplina.nome })
+    .catch(() => {
+      this.toast.error("Erro ao carregar disciplinas")
+      this.nav.navigate(['/cadastro/lista-turmas'])
     })
+  }
+
+  carregaCursos() {
+    this.service.getListaObjetos('curso')
+    .then((resposta) => {
+      this.cursos = resposta
+      this.cursos.map(curso => {
+        this.cursoOp = [...this.cursoOp, { value: curso, label: curso.nome }]
+      })
+    })
+    .catch(() => {
+      this.toast.error("Erro ao carregar cursos")
+      this.nav.navigate(['/cadastro/lista-turmas'])
+    })
+  }
+
+  carregaAlunos() {
+    this.service.getListaObjetos('aluno')
+      .then(resposta => {
+        this.alunos = resposta
+        this.alunos.map(aluno => {
+          this.alunosOp = [...this.alunosOp, { value: aluno, label: aluno.id + " - " + aluno.nome + " " + aluno.sobrenome }]
+        })
+      })
+      .catch(() => {
+        this.toast.error("Erro ao carregar alunos")
+        this.nav.navigate(['/cadastro/lista-turmas'])
+      })
   }
 
   createFormTurma(turma: Turma) {
@@ -93,7 +147,13 @@ export class FormTurmaComponent implements OnInit {
   onSubmit() {
     let matriculas: Array<Matricula>
     this.alunosCad.map(aluno => {
+      if (aluno.matriculas.length == 0){
+        this.toast.error("O Aluno " + aluno.nome + " esta matriculado em nenhum curso", "Erro")
+        return
+      }
+
       matriculas.push(aluno.matriculas[0])
+
     })
     this.formTurma.controls['matriculas'].setValue(matriculas)
     console.log(this.formTurma.value)

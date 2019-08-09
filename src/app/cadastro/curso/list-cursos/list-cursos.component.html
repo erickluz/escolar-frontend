@@ -18,16 +18,16 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let curso of cursos">
+            <tr *ngFor="let curso of cursos; let i = index">
               <td>{{curso.id}}</td>
               <td>{{curso.nome}}</td>
               <td>{{curso.descricaoCurso}}</td>
               <td>
                 <button type="button" class="btn btn-sm btn-ghost-info"><i
-                    class="icon-pencil icons d-block"></i>Editar</button>
+                    class="icon-pencil icons d-block" routerLink="/cadastro/form-curso/{{curso.id}}"></i>Editar</button>
                 <button type="button" class="btn btn-sm btn-ghost-warning"><i
                     class="icon-magnifier icons d-block"></i>Detalhes</button>
-                <button type="button" class="btn btn-sm btn-ghost-danger"><i
+                <button type="button" class="btn btn-sm btn-ghost-danger" (click)="this.dangerModal.show(); id=i"><i
                     class="icon-ban icons d-block"></i>Desativar</button>
               </td>
             </tr>
@@ -45,3 +45,25 @@
       </div>
     </div>
   </div>
+
+  
+  <div bsModal #dangerModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-danger modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Excluir</h4>
+          <button type="button" class="close" (click)="dangerModal.hide()" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Deseja realmente excluir o item?&hellip;</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="dangerModal.hide()">Fechar</button>
+          <button type="button" class="btn btn-danger" (click)="deletaCurso($event)">Excluir</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->

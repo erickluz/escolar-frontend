@@ -5,7 +5,7 @@ export const ALUNO: Array<Aluno> = [{
     nome: "Erick",
     sobrenome: "Luz",
     email: "erickluz360@gmail.com",
-    RA: "",
+    ra: "",
     matriculas: [],
     senha: "",
     cpf: "12345",

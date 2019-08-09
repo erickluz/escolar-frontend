@@ -77,7 +77,7 @@ export const ALUNO: Aluno = {
     telefone1: "123",
     telefone2: "456",
     dataCadastro: new Date().toLocaleDateString(),
-    RA: "1111111",
+    ra: "1111111",
     matriculas: [MATRICULA1]
     
 }
@@ -94,7 +94,7 @@ export const ALUNOS: Array<Aluno> = [{
     telefone1: "123",
     telefone2: "456",
     dataCadastro: new Date().toLocaleDateString(),
-    RA: "1111111",
+    ra: "1111111",
     matriculas: [MATRICULA2]
 },
 {
@@ -109,7 +109,7 @@ export const ALUNOS: Array<Aluno> = [{
     telefone1: "4444",
     telefone2: "422256",
     dataCadastro: new Date().toLocaleDateString(),
-    RA: "2222222",
+    ra: "2222222",
     matriculas: []
 },
 {
@@ -124,7 +124,7 @@ export const ALUNOS: Array<Aluno> = [{
     telefone1: "11111-33333",
     telefone2: "111232111",
     dataCadastro: new Date().toLocaleDateString(),
-    RA: "333333333",
+    ra: "333333333",
     matriculas: []
 }]
 
