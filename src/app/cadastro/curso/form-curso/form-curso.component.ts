@@ -22,7 +22,13 @@ export class FormCursoComponent implements OnInit {
   private curso: Curso
   private edicao: boolean = false
 
-  constructor(private formBuilder: FormBuilder, private service: EscolarService, private toast: ToastrService, private route: ActivatedRoute, private nav: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private service: EscolarService,
+    private toast: ToastrService,
+    private route: ActivatedRoute,
+    private nav: Router
+  ) { }
 
   ngOnInit() {
     this.listaDisciplinas()

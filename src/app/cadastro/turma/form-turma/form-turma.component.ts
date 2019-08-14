@@ -12,7 +12,7 @@ import { Professor } from '../../../shared/professor.model';
 import { Disciplina } from '../../../shared/disciplina.model';
 import { EscolarService } from '../../escolar.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-form-turma',
@@ -26,6 +26,7 @@ export class FormTurmaComponent implements OnInit {
 
   private formTurma: FormGroup
   private formAula: FormGroup
+  private turma: Turma
   // MOCK
   private alunos: Array<Aluno>
   private alunosCad: Array<Aluno> = []
@@ -37,19 +38,43 @@ export class FormTurmaComponent implements OnInit {
   private cursoOp: NgOption[] = []
   private professoresOp: NgOption[] = []
   private disciplinaOp: NgOption[] = []
+  private edicao: boolean = false
+
 
   constructor(
     private formBuilder: FormBuilder, 
     private modalService: NgbModal, 
     private service: EscolarService, 
     private toast: ToastrService,
-    private nav: Router) { }
+    private nav: Router,
+    private rot: ActivatedRoute
+    ) { }
 
   ngOnInit() {
     // Criando formularios reativos
     this.createFormTurma(new Turma(null, null, null, null, [new Matricula(null, null, null, null, null)]))
     this.createFormAula(new Aula(null, null, null, null, null), new Professor(null, null, null, null, null, null, null, null, null, null, null, null))
 
+    if(this.edicao){
+      let idTurma = this.rot.snapshot.params['id']
+      if (idTurma != null){
+        this.service.getObjetoPorId(idTurma, 'turma')
+        .then(resposta => {
+          this.turma = resposta
+          console.log(JSON.stringify(resposta))
+          this.formTurma.setValue(this.turma)
+        })
+        .catch(resposta => {
+          console.log("Erro ao carregar turma : " + idTurma + " : " + JSON.stringify(resposta))
+          this.toast.error("Erro ao carregar Turma")
+          this.nav.navigate(['/cadastro/lista-turmas'])
+        })
+      } else {
+        this.toast.error("Erro interno")
+        this.nav.navigate(['/cadastro/lista-turmas'])
+      }
+    }
+    
     this.carregaAlunos()
     this.carregaCursos()
     this.carregaProfessores()
@@ -120,7 +145,6 @@ export class FormTurmaComponent implements OnInit {
       dataInicio: [turma.dataInicio],
       local: [turma.local],
       curso: [turma.curso],
-      aulas: this.formBuilder.array([]),
       matriculas: [turma.matriculas]
     })
   }
@@ -155,8 +179,12 @@ export class FormTurmaComponent implements OnInit {
       matriculas.push(aluno.matriculas[0])
 
     })
+
     this.formTurma.controls['matriculas'].setValue(matriculas)
-    console.log(this.formTurma.value)
+
+    
+
+
   }
 
   removeAluno(valor: Event) {

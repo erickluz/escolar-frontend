@@ -23,8 +23,8 @@
               <td>{{curso.nome}}</td>
               <td>{{curso.descricaoCurso}}</td>
               <td>
-                <button type="button" class="btn btn-sm btn-ghost-info"><i
-                    class="icon-pencil icons d-block" routerLink="/cadastro/form-curso/{{curso.id}}"></i>Editar</button>
+                <button type="button" class="btn btn-sm btn-ghost-info" routerLink="/cadastro/form-curso/{{curso.id}}"><i
+                    class="icon-pencil icons d-block"></i>Editar</button>
                 <button type="button" class="btn btn-sm btn-ghost-warning"><i
                     class="icon-magnifier icons d-block"></i>Detalhes</button>
                 <button type="button" class="btn btn-sm btn-ghost-danger" (click)="this.dangerModal.show(); id=i"><i
