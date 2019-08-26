@@ -33,7 +33,7 @@ export class ListDisciplinaComponent implements OnInit {
     })
     .catch(resposta => {
       this.dangerModal.hide()
-      this.toastr.error( resposta.json().msg, 'Erro')
+      this.toastr.error( resposta.json().message, 'Erro')
     })
   }
 

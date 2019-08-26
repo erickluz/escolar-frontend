@@ -29,8 +29,8 @@ export class ListProfessorComponent implements OnInit {
         this.getListaProfessores()
       })
       .catch(resposta => {
-        console.log("Erro ao deletar professor" + resposta.json().msg)
-        this.toastr.error(resposta.json().msg, 'ERRO:' )
+        console.log("Erro ao deletar professor" + resposta.json().message)
+        this.toastr.error(resposta.json().message, 'ERRO:' )
       })
   }
 

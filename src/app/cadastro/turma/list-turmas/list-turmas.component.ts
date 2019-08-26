@@ -41,9 +41,11 @@ export class ListTurmasComponent implements OnInit {
     .then(() => {
       this.listaTurmas()
       this.toast.success("Sucesso ao deletar turma")
+      this.dangerModal.hide()
     })
     .catch(resposta => {
-      this.toast.error(resposta.json().msg, "Erro ")
+      this.toast.error(resposta.json().message, "Erro ")
+      this.dangerModal.hide()
     })
   }
 

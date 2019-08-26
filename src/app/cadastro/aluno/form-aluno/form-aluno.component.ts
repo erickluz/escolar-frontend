@@ -66,7 +66,7 @@ export class FormAlunoComponent implements OnInit {
         this.rota.navigate(['/cadastro/lista-alunos'])
       })
       .catch(resposta => {
-        this.toast.error(resposta.json().msg, "Erro")
+        this.toast.error(resposta.json().message, "Erro")
       })
     } else {
       this.service.editarObjeto(this.formAluno.value, 'aluno')
@@ -75,7 +75,7 @@ export class FormAlunoComponent implements OnInit {
         this.rota.navigate(['/cadastro/lista-alunos'])
       })
       .catch(resposta => {
-        this.toast.error(resposta.json().msg, "Erro")
+        this.toast.error(resposta.json().message, "Erro")
       })
     }
     

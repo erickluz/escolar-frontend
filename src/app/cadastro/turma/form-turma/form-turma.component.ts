@@ -55,26 +55,24 @@ export class FormTurmaComponent implements OnInit {
     this.createFormTurma(new Turma(null, null, null, null, [new Matricula(null, null, null, null, null)]))
     this.createFormAula(new Aula(null, null, null, null, null), new Professor(null, null, null, null, null, null, null, null, null, null, null, null))
 
-    if (this.edicao) {
-      let idTurma = this.rot.snapshot.params['id']
-      if (idTurma != null) {
-        this.service.getObjetoPorId(idTurma, 'turma')
-          .then(resposta => {
-            this.turma = resposta
-            console.log(JSON.stringify(resposta))
-            this.formTurma.setValue(this.turma)
-          })
-          .catch(resposta => {
-            console.log("Erro ao carregar turma : " + idTurma + " : " + JSON.stringify(resposta))
-            this.toast.error("Erro ao carregar Turma")
-            this.nav.navigate(['/cadastro/lista-turmas'])
-          })
-      } else {
-        this.toast.error("Erro interno")
-        this.nav.navigate(['/cadastro/lista-turmas'])
-      }
-    }
 
+    let idTurma = this.rot.snapshot.params['id']
+    if (idTurma != null) {
+      this.service.getObjetoPorId(idTurma, 'turma')
+        .then(resposta => {
+          this.turma = resposta
+          console.log(JSON.stringify(resposta))
+          this.formTurma.setValue(this.turma)
+          this.formTurma.get('curso').patchValue(resposta.curso.id)
+          this.buscaAlunosPorMatricula()
+          this.aulasCad = this.formTurma.value.aulas
+        })
+        .catch(resposta => {
+          console.log("Erro ao carregar turma : " + idTurma + " : " + JSON.stringify(resposta))
+          this.toast.error("Erro ao carregar Turma")
+          this.nav.navigate(['/cadastro/lista-turmas'])
+        })
+    }
     this.carregaAlunos()
     this.carregaCursos()
     this.carregaProfessores()
@@ -161,6 +159,21 @@ export class FormTurmaComponent implements OnInit {
     });
   }
 
+  buscaAlunosPorMatricula(){
+    let matriculas: Array<Matricula> = []
+    matriculas = this.formTurma.value.matriculas
+    for(let matricula of matriculas){      
+      this.service.getObjetoPorId(matricula.id, 'aluno')
+      .then(resposta => {
+        let aluno: Aluno = resposta
+        this.alunosCad.push(aluno)
+      })
+      .catch(() => {
+        console.log("Erro ao buscar aluno por matricula")
+      })
+    }
+  }
+
   adicionaAluno(valor: Event) {
     if (valor != undefined)
       this.alunosCad.push(valor['value'])
@@ -203,8 +216,8 @@ export class FormTurmaComponent implements OnInit {
     for (let aula of this.aulasCad) {
 
       let idProfessores: Array<any> = []
-      for(let professor of aula.professores){
-        idProfessores.push({id: professor.id})
+      for (let professor of aula.professores) {
+        idProfessores.push({ id: professor.id })
       }
 
       aulasDTO.push({
@@ -232,7 +245,7 @@ export class FormTurmaComponent implements OnInit {
         this.nav.navigate(["/cadastro/lista-turmas"])
       })
       .catch(resposta => {
-        this.toast.error(resposta.json().msg, "Erro")
+        this.toast.error(resposta.json().message, "Erro")
       })
 
   }

@@ -32,7 +32,7 @@ export class ListAlunoComponent implements OnInit {
       this.carregaAlunos()
     })
     .catch(resposta => {
-      this.toast.error(resposta.json().msg, "Erro")
+      this.toast.error(resposta.json().message, "Erro")
       this.dangerModal.hide()
     })
   }

@@ -40,6 +40,7 @@ export class FormCursoComponent implements OnInit {
           this.curso = curso
           this.createForm(this.curso)
           this.listaDisciplinas()
+          this.edicao = true
         })
         .catch(() => {
           this.toast.error("Erro ao consultar curso")
@@ -68,7 +69,7 @@ export class FormCursoComponent implements OnInit {
           this.nav.navigate(['/cadastro/lista-cursos'])
         })
         .catch(resposta => {
-          this.toast.error(resposta.json().msg, "Erro")
+          this.toast.error(resposta.json().message, "Erro")
           this.nav.navigate(['/cadastro/lista-cursos'])
         })
     } else {
@@ -78,7 +79,7 @@ export class FormCursoComponent implements OnInit {
           this.nav.navigate(['/cadastrar/lista-cursos'])
         })
         .catch(resposta => {
-          this.toast.error(resposta.json().msg, "Erro ao editar objeto")
+          this.toast.error(resposta.json().message, "Erro ao editar objeto")
           this.nav.navigate(['/cadastrar/lista-cursos'])
         })
     }
@@ -93,7 +94,7 @@ export class FormCursoComponent implements OnInit {
         })
       })
       .catch(erro => {
-        this.toast.error(erro.json().msg, "Erro")
+        this.toast.error(erro.json().message, "Erro")
       })
   }
 

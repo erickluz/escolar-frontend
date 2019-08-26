@@ -32,7 +32,7 @@ export class FormDisciplinaComponent implements OnInit {
           this.createForm(this.disciplina )
         })
         .catch(resposta => {
-          this.toast.error(resposta.json().msg, "Erro")
+          this.toast.error(resposta.json().message, "Erro")
           this.rota.navigate(['/cadastro/lista-disciplinas'])
         })
     }
@@ -55,7 +55,7 @@ export class FormDisciplinaComponent implements OnInit {
           this.rota.navigate(['/cadastro/lista-disciplinas'])
         })
         .catch(resposta => {
-          this.toast.error(resposta.json().msg, "Erro")
+          this.toast.error(resposta.json().message, "Erro")
           this.rota.navigate(['/cadastro/lista-disciplinas'])
         })
     } else {
@@ -65,7 +65,7 @@ export class FormDisciplinaComponent implements OnInit {
           this.rota.navigate(['/cadastro/lista-disciplinas'])
         })
         .catch(resposta => {
-          this.toast.error(resposta.json().msg, "Erro")
+          this.toast.error(resposta.json().message, "Erro")
           this.rota.navigate(['/cadastro/lista-disciplinas'])
         })
     }

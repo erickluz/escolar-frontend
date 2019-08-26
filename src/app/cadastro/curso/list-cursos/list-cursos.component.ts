@@ -39,7 +39,7 @@ export class ListCursosComponent implements OnInit {
       this.toast.success("Sucesso ao deletar curso")
     })
     .catch(resposta => {
-      this.toast.error(resposta.json().msg, "Erro")
+      this.toast.error(resposta.json().message, "Erro")
     })
   }
 
